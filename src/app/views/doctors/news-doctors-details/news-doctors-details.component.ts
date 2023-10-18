@@ -2,7 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {map, Observable, shareReplay} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {ActivatedRoute, Router} from "@angular/router";
-import {SourcesService} from "../../../services/sources.service";
+import {NewsService} from "../../../services/news.service";
+
 
 @Component({
   selector: 'app-news-doctors-details',
@@ -13,12 +14,8 @@ export class NewsDoctorsDetailsComponent implements OnInit{
   @Input() imageNews!:string;
   @Input() title!:string;
   @Input() description!:string;
-  @Input() info!:string;
-  @Input() view!:string;
-
   @Input() newsList: any;
 
-//CONNECTING TO FAKEAPI
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -27,11 +24,11 @@ export class NewsDoctorsDetailsComponent implements OnInit{
   news: Array<any> = [];
   new: any;
   id="" ;
-  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver,private newsService: NewsService, private router: Router) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    this.newsSource.getSources('news').subscribe((data: any): void => {
+    this.newsService.getAll().subscribe((data: any): void => {
       this.news = data;
       this.new = this.news.find(x => x.id == this.id);
 
@@ -42,6 +39,5 @@ export class NewsDoctorsDetailsComponent implements OnInit{
 
 
   }
-
 
 }

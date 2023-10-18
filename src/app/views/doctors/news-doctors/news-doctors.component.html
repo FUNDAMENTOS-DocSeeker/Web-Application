@@ -16,11 +16,9 @@
       <div fxLayout="row wrap" fxLayoutGap="30px grid">
         <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let news of newsList">
           <app-new-card [routerLink]="['/listNewsDoctors',news.id]"
-                        [imageNews]="news.image"
+                        [imageNews]="news.imageUrl"
                         [title]="news.title"
-                        [description]="news.description"
-                        [info]="news.info"
-                        [view]="news.views">
+                        [description]="news.description">
           </app-new-card>
         </div>
       </div>
