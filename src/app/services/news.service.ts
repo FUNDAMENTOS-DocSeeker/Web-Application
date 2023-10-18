@@ -8,7 +8,7 @@ import {News} from "../interfaces/news";
 })
 export class NewsService {
 
-  basePath: string = 'http://localhost:3000/news';
+  basePath: string = 'http://localhost:8080/api/v1/news';
 
   httpOptions: {headers: HttpHeaders}={
     headers: new HttpHeaders({

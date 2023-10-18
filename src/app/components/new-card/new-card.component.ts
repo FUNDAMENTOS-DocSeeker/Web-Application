@@ -11,8 +11,4 @@ export class NewCardComponent {
   @Input() imageNews!:string;
   @Input() title!:string;
   @Input() description!:string;
-  @Input() info!:string;
-  @Input() view!:string;
-
-
 }
