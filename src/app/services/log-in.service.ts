@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
-import {Patient} from "../interfaces/patient";
-import {HttpClient} from "@angular/common/http";
-import {Doctor} from "../interfaces/doctor";
-import {Observable} from "rxjs";
+import { Patient } from "../interfaces/patient";
+import { HttpClient } from "@angular/common/http";
+import { Doctor } from "../interfaces/doctor";
+import { DoctorsService } from "./doctors.service";
+import { DoctorResource } from "../interfaces/doctor-resource";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LogInService {
-  patients: Patient[] = [];
-  constructor(private http: HttpClient) { }
+
+  patients: Patient[] = []
+
+  constructor(private http: HttpClient, private doctorService: DoctorsService) { }
 
   addPatient(patient: Patient){
     this.patients.push(patient);
@@ -30,11 +33,19 @@ export class LogInService {
     return this.http.put(url, doctor);
   }
 
+  async loginDoctor(dni: string, password: string): Promise<DoctorResource | undefined> {
+    try {
+      const response = await this.doctorService.getDoctorByLoginCredentials(dni, password).toPromise();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   updatePatient(patient: Patient, id :any){
     const url = `http://localhost:3000/patients/${id}`;
     return this.http.put(url, patient);
   }
-
 
   getPatient(dni:string, password:string): Patient | undefined {
     return this.patients.find(patient => patient.dni==dni && patient.password == password);

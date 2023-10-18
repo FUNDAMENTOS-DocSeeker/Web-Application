@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import {Doctor} from "../../../interfaces/doctor";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {BreakpointObserver} from "@angular/cdk/layout";
-import {SourcesService} from "../../../services/sources.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {LogInService} from "../../../services/log-in.service";
-import {Router} from "@angular/router";
+import { Doctor } from "../../../interfaces/doctor";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { SourcesService } from "../../../services/sources.service";
+import { LogInService } from "../../../services/log-in.service";
+import { Router } from "@angular/router";
+import { DoctorResource } from "../../../interfaces/doctor-resource";
 
 @Component({
   selector: 'app-log-in-doctor',
@@ -14,11 +13,15 @@ import {Router} from "@angular/router";
 })
 export class LogInDoctorComponent {
   rpassword: string ='';
-  doctor: Doctor={dni:'', password:'', name:'', area:'', description:'', patients:NaN, years:NaN, age:NaN, email:'', cost:NaN,
-    photo: "https://www.browardhealth.org/-/media/broward-health/placeholder/doctor-placeholder-male.jpg", education: [ {name: ''}],
-    hoursAvailable:[{id:0, hours: "9:00 AM - 10:00 AM"}, {id:1, hours:"10:30 AM - 12:00 PM"}, {id:2, hours:"15:30 PM - 17:00 PM"}]};
+  doctor: Doctor = {} as Doctor;
   doctors: Array<any> = [];
   signInForm: FormGroup;
+  logInForm = new FormGroup(
+      {
+        dni: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required])
+      }
+  )
 
   constructor(private newsSource: SourcesService, private loginService:LogInService, public builder:FormBuilder, private router: Router) {
     this.signInForm = this.builder.group({
@@ -67,15 +70,6 @@ export class LogInDoctorComponent {
     this.rpassword='';
   }
 
-  login(){
-    const doctorFound = this.doctors.find(doctor =>doctor.dni== this.doctor.dni && doctor.password == this.doctor.password)
-    if(doctorFound){
-      console.log(doctorFound)
-      localStorage.setItem('currentDoctor', JSON.stringify(doctorFound));
-      this.router.navigate(['/dashboardDoctor'])
-    }
-  }
-
   ngOnInit() {
     this.newsSource.getSources('doctors').subscribe((data: any): void => {
       this.doctors = data;
@@ -83,4 +77,17 @@ export class LogInDoctorComponent {
     });
   }
 
+  submitLoginForm() {
+    let doctorAccount: Promise<DoctorResource | undefined> = this.loginService.loginDoctor(this.logInForm.value.dni ?? '', this.logInForm.value.password ?? '');
+
+    doctorAccount
+        .then(response => {
+          console.log(response);
+          localStorage.setItem('currentDoctor', JSON.stringify(response));
+          this.router.navigate(['/dashboardDoctor'])
+        })
+        .catch(error => {
+          console.log(error);
+        });
+  }
 }
