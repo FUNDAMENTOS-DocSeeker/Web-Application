@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {SourcesService} from "../../../services/sources.service";
+import { ActivatedRoute } from "@angular/router";
+import { SourcesService } from "../../../services/sources.service";
+import { DoctorResource } from "../../../interfaces/doctor-resource";
 
 @Component({
   selector: 'app-profile-doctor',
@@ -12,7 +13,7 @@ export class ProfileDoctorComponent {
   reviewsToDoctor: Array<any> = [];
   doctor: any;
   id="" ;
-  currentDoctor: any;
+  currentDoctor: DoctorResource = {} as DoctorResource;
   promedioCustomerScore: number = 0;
   constructor(private route: ActivatedRoute, private newsSource: SourcesService) {
   }
@@ -29,19 +30,11 @@ export class ProfileDoctorComponent {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    this.currentDoctor = localStorage.getItem('currentDoctor');
-    if (this.currentDoctor){
-      this.currentDoctor = JSON.parse(this.currentDoctor);
+    let doctor: string | null = localStorage.getItem('currentDoctor');
+
+    if (doctor) {
+      this.currentDoctor = JSON.parse(doctor);
+      console.log(this.currentDoctor);
     }
-
-    this.newsSource.getSources('reviews').subscribe((data: any): void =>{
-      this.allreviews = data
-      this.reviewsToDoctor = this.allreviews.filter(review => review.idDoctor == this.currentDoctor.id);
-      this.promedioCustomerScore = this.calcularPromedioCustomerScore(this.reviewsToDoctor);
-      console.log("Sources: ", this.reviewsToDoctor);
-
-    console.log("User logged: ", this.currentDoctor);
-    })
   }
-
 }
