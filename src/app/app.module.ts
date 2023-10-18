@@ -27,7 +27,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import {FormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from './views/patients/dashboard/dashboard.component';
 import { ListDoctorsComponent } from './views/patients/list-doctors/list-doctors.component';
 import { DoctorProfileComponent } from './views/patients/doctor-profile/doctor-profile.component';
@@ -114,32 +114,33 @@ import { NewsDoctorsDetailsComponent } from './views/doctors/news-doctors-detail
     NewsDoctorsComponent,
     NewsDoctorsDetailsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatTabsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule,
-    FormsModule,
-    MatButtonModule,
-    HttpClientModule,
-    MatListModule,
-    MatSidenavModule,
-    NgOptimizedImage,
-    MatCheckboxModule,
-    MatSliderModule,
-    FlexLayoutModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatSelectModule,
-    MatSortModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatTabsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatIconModule,
+        FormsModule,
+        MatButtonModule,
+        HttpClientModule,
+        MatListModule,
+        MatSidenavModule,
+        NgOptimizedImage,
+        MatCheckboxModule,
+        MatSliderModule,
+        FlexLayoutModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatPaginatorModule,
+        MatTableModule,
+        MatSelectModule,
+        MatSortModule,
+        ReactiveFormsModule
+    ],
 
   providers: [SourcesService],
   bootstrap: [AppComponent]
