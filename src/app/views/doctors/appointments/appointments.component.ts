@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import {map, Observable, shareReplay} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
-import {SourcesService} from "../../../services/sources.service";
+import {AppointmentService} from "../../../services/appointment.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {LogInService} from "../../../services/log-in.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {SourcesService} from "../../../services/sources.service";
 @Component({
   selector: 'app-appointments',
   templateUrl: './appointments.component.html',
@@ -23,7 +24,7 @@ export class AppointmentsComponent {
   patients: Array<any> = [];
 
 
-  constructor(private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {
+  constructor(private breakpointObserver: BreakpointObserver, private appointmentSource: AppointmentService, private newsSource: SourcesService, private router: Router) {
 
   }
   ngOnInit() {
@@ -31,8 +32,8 @@ export class AppointmentsComponent {
     if (this.currentDoctor) {
       this.currentDoctor = JSON.parse(this.currentDoctor);
     }
-    this.newsSource.getSources('dates').subscribe((data: any): void => {
-      this.dates = data.filter((date: any) => date.doctorId == this.currentDoctor.id);
+    this.appointmentSource.getAll().subscribe((data: any): void => {
+      this.dates = data;
       console.log("Sources dates: ", this.dates);
     });
     this.newsSource.getSources('patients').subscribe((data: any): void => {
