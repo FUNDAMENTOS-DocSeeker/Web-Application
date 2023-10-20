@@ -3,6 +3,7 @@ import {map, Observable, shareReplay} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SourcesService} from "../../../services/sources.service";
+import { MedicalHistoryService } from 'src/app/services/medical-history.service';
 
 @Component({
   selector: 'app-new-medical-history',
@@ -25,14 +26,14 @@ export class NewMedicalHistoryComponent {
   description = "";
 
 
-  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {
+  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router, private medicalService: MedicalHistoryService) {
     this.selectedDate = new Date();
   }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
 
-    this.newsSource.getSources('medicalHistory').subscribe((data: any): void => {
+    this.medicalService.getAll().subscribe((data: any): void => {
       this.medicalHistories = data;
       this.medicalHistory = this.medicalHistories.find(medicalHistory => medicalHistory.idPatient == this.id);
       console.log("Medical History: ", this.medicalHistory);
@@ -55,7 +56,7 @@ export class NewMedicalHistoryComponent {
         "content": this.description
       }
       this.medicalHistory["historial"].push(newHistory)
-      this.newsSource.updateSources('medicalHistory', this.medicalHistory.id, this.medicalHistory).subscribe((data: any): void => {
+      this.medicalService.update(this.medicalHistory.id, this.medicalHistory).subscribe((data: any): void => {
         console.log("Medical HIstory PUT", data)
       })
     }
@@ -71,7 +72,7 @@ export class NewMedicalHistoryComponent {
           }
         ]
       }
-      this.newsSource.postSources('medicalHistory', newHistory).subscribe((data: any): void => {
+      this.medicalService.create(newHistory).subscribe((data: any): void => {
         console.log("Medical HIstory POST new", data)
       })
     }

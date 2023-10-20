@@ -6,6 +6,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {LogInService} from "../../../services/log-in.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import { MedicalHistoryService } from 'src/app/services/medical-history.service';
 @Component({
   selector: 'app-medical-history-patient',
   templateUrl: './medical-history-patient.component.html',
@@ -24,7 +25,7 @@ export class MedicalHistoryPatientComponent {
   id="";
 
 
-  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {
+  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService,private medicalService: MedicalHistoryService, private router: Router) {
 
   }
   ngOnInit() {
@@ -40,8 +41,8 @@ export class MedicalHistoryPatientComponent {
       console.log("PATIENT: ", this.currentPatient);
     })
 
-    this.newsSource.getSources('medicalHistory').subscribe((data: any): void => {
-      let temp = data.find((x: any) => x.idPatient == this.id);
+    this.medicalService.getAll().subscribe((data: any): void => {
+      let temp = data.find((x: any) => x.patientId == this.id);
       this.medicalHistory = temp.historial;
       console.log("MEDICAL HISTORY: ", this.medicalHistory);
     })
