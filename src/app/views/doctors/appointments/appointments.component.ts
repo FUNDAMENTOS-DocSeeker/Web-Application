@@ -32,7 +32,7 @@ export class AppointmentsComponent {
     if (this.currentDoctor) {
       this.currentDoctor = JSON.parse(this.currentDoctor);
     }
-    this.appointmentSource.getAll().subscribe((data: any): void => {
+    this.appointmentSource.getById(Number(this.currentDoctor.id)).subscribe((data: any): void => {
       this.dates = data;
       console.log("Sources dates: ", this.dates);
     });

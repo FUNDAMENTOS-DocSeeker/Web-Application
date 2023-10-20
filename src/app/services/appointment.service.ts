@@ -37,6 +37,13 @@ export class AppointmentService {
         catchError(this.handleError)
       )
   }
+  getById(id: number):Observable<Appointment>{
+    return this.http.get<Appointment>(this.basePath+'/doctor/'+id,this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
   postReview(newObject: any): Observable<Object>{
     return this.http.post<Appointment>(this.basePath, newObject,this.httpOptions)
       .pipe(
