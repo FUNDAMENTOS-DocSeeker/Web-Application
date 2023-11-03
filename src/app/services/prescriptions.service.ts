@@ -9,7 +9,7 @@ import {Doctor} from "../interfaces/doctor";
 })
 export class PrescriptionsService {
 
-  basePath: string = 'http://localhost:8080/api/v1/prescription';
+  basePath: string = 'http://localhost:8080/api/v1/prescriptions';
 
   httpOptions: {headers: HttpHeaders}={
     headers: new HttpHeaders({
@@ -39,7 +39,7 @@ export class PrescriptionsService {
       )
   }
   getDoctorById(id: any): Observable<Doctor> {
-    return this.http.get<Doctor>(`http://localhost:3000/doctors/${id}`, this.httpOptions)
+    return this.http.get<Doctor>(`http://localhost:8080/doctors/${id}`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
