@@ -11,7 +11,7 @@
 
         <h2 *ngIf="selectedIndex===i" class="image-title">{{photo.title}}</h2>
 
-        <img [src]="photo.image" alt="{{photo.title}}"
+        <img [src]="photo.imageUrl" alt="{{photo.title}}"
              [ngClass]="{'image-active': selectedIndex === i}">
       </div>
 
