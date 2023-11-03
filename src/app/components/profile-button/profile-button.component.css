@@ -1,0 +1,25 @@
+.mat-button{
+  display: flex;
+}
+
+.doctor-btn{
+  align-items: center;
+  justify-content: space-between;
+  width: 10%;
+  height: 30%;
+  padding: 0 16px;
+  border-radius: 15px;
+  color: white;
+  background-color: #0093AB;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.doctor-btn img{
+  margin-bottom: 30px;
+}
+
+.label1{
+  margin-top: 100px;
+  color:white;
+}

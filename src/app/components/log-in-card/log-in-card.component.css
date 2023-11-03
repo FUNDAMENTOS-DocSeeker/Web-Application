@@ -1,0 +1,67 @@
+
+.example-card {
+  max-width: 470px;
+}
+
+.center-content {
+  text-align: -webkit-center;
+}
+
+.example-full-width {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.example-mid-width{
+  margin-top: 10px;
+  width: 50%;
+}
+
+.example-mid-width-confirm{
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 47%;
+}
+.mat-button{
+  margin-top: 10px;
+  width: 100%;
+  color: white;
+  height: 40px;
+  background-color: #faf5f5;
+}
+
+@media screen and (max-width: 1780px){
+
+  .example-card {
+    max-width: 90%;
+  }
+
+  .example-mid-width{
+    margin-top: 5px;
+    width: 95%;
+  }
+
+  .example-mid-width-confirm{
+    margin-top: 5px;
+    width: 95%;
+    margin-right: -10px;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .example-card {
+    max-width: 90%;
+  }
+
+  .example-mid-width{
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .example-mid-width-confirm{
+    margin-top: 5px;
+    width: 100%;
+    margin-right: -10px;
+  }
+
+}

@@ -1,0 +1,75 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer{
+  width: 260px;
+  background: #E0E0E0;
+}
+
+mat-drawer-container{
+  height: 100%;
+}
+
+h1{
+  margin: 2rem 8rem;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.profile-container, .recordContainer{
+  width: 80%;
+  align-items: center;
+  display: flex;
+  border: 1px solid #717171;
+  border-radius: 20px;
+  margin: 40px auto;
+  padding: 2rem;
+}
+
+.buttonContainer{
+  align-items: center;
+  display: flex;
+  border: 1px solid #717171;
+  border-radius: 20px;
+  margin: 40px auto;
+  padding: 2rem;
+  transition: transform .2s;
+}
+.buttonContainer:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.img-patient {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #0093AB;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  margin: 30px 0 30px 70px;
+}
+
+.patient-info{
+  margin-left: 120px;
+}
+
+.name{
+  margin-left: 15px;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.patient-detail{
+  margin-top: 18px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.mat-icon{
+  vertical-align: middle;
+  margin-right: 10px;
+  color: #0093AB;
+}

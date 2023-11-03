@@ -1,0 +1,61 @@
+.login-container{
+  display: flex;
+  width: 80%;
+  margin: 6rem auto;
+  gap: 2rem;
+}
+.card-login{
+  border: 2px solid #0093AB;
+  border-radius: 30px;
+  padding: 4rem;
+}
+img{
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 1780px){
+  .login-container{
+    display: flex;
+    width: 80%;
+    margin: 3rem auto;
+    gap: 2rem;
+  }
+
+  .card-login{
+    border: 2px solid #0093AB;
+    border-radius: 30px;
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 1600px){
+  .login-container{
+    display: flex;
+    width: 90%;
+    margin: 3rem auto;
+    gap: 2rem;
+  }
+
+  .card-login{
+    border: 2px solid #0093AB;
+    border-radius: 30px;
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 1350px){
+  .login-container{
+    display: flex;
+    width: 50%;
+    margin: 2rem auto;
+    gap: 2rem;
+  }
+  .card-login{
+    border: 2px solid #0093AB;
+    border-radius: 30px;
+  }
+
+  img{
+    display: none;
+  }
+}

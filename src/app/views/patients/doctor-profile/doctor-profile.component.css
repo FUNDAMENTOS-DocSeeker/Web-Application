@@ -1,0 +1,121 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer{
+  width: 260px;
+  background: #E0E0E0;
+}
+
+mat-drawer-container{
+  height: 100%;
+}
+svg{
+  font-size: 5px;
+}
+h1{
+  margin: 2rem 8rem;
+  font-weight: bold;
+  font-size: 30px;
+}
+header{
+  display:flex;
+  justify-content: space-evenly;
+}
+button{
+  text-align: center;
+  background-color: #0093AB;
+  color: white;
+  font-size: 20px;
+  margin-top: 1rem;
+  border-radius: 20px;
+  border: none;
+  transition: all .2s;
+}
+.form-camp{
+  margin-top: 1rem;
+  height: 80px;
+}
+button:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+  color: #0093AB;
+  background-color: white;
+  border: 1px solid #0093AB;
+}
+.reviews{
+  padding: 2rem;
+  margin: 0 auto;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.doctorProfile{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  border-radius: 20px;
+  padding: 1rem;
+  border: solid 1px black;
+  margin: 1rem auto;
+  width: 50vw;
+}
+.doctorImg{
+  border-radius: 50%;
+  border: 1px solid #0093AB;
+  height: 300px;
+  width: 300px;
+}
+.doctorInfo{
+  display: flex;
+  flex-direction: column;
+}
+.doctorPrincipal h2{
+  color: gray;
+}
+.doctorStats{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-top: 2rem
+}
+.doctorStat{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+i{
+  font-size: 50px;
+}
+.statInfo h2{
+  font-weight: bolder;
+}
+.doctorEducation{
+  margin: 1rem auto;
+  width: 50vw;
+  border-radius: 0 0 20px 20px;
+  border: solid 1px black;
+}
+.doctorEducation .title{
+  padding: .5rem;
+  font-weight: bolder;
+  background-color: #0093AB;
+  color: white;
+}
+.doctorEducation .education{
+  font-weight: bolder;
+  margin-left: 20px
+}
+@media (max-width: 480px) {
+  .doctorProfile{
+    flex-direction: column;
+  }
+}

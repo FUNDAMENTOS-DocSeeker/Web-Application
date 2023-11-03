@@ -1,0 +1,64 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <header>
+      <h1>Professional Profile</h1>
+      <mat-form-field class="form-camp">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </mat-form-field>
+      <button (click)="navigateToAppointment()">Schedule an appointment</button>
+    </header>
+    <div class="container">
+      <main class="container">
+        <div class="doctorProfile">
+          <img class="doctorImg" src="https://static.vecteezy.com/system/resources/previews/006/037/586/original/doctor-linear-icon-medical-worker-practitioner-scientist-thin-line-illustration-contour-symbol-isolated-outline-drawing-vector.jpg" alt="profile image"/>
+          <div class="doctorInfo">
+            <div class="doctorPrincipal">
+              <h1>{{doctor.name}}</h1>
+              <h2>{{doctor.speciality}}</h2>
+            </div>
+            <div class="doctorStats">
+              <div class="doctorStat">
+                <i class="pi pi-user-plus"></i>
+                <div class="statInfo">
+                  <h2>Patients</h2>
+                  <h2>{{doctor.patientsAssisted}}</h2>
+                </div>
+              </div>
+              <div class="doctorStat">
+                <div class="statInfo">
+                  <h2>Years of experience</h2>
+                  <h2>{{doctor.experienceYears}}</h2>
+                </div>
+              </div>
+              <div class="doctorStat">
+                <div class="statInfo">
+                  <h2>Birth Date</h2>
+                  <h2>{{doctor.birthDate}}</h2>
+                </div>
+              </div>
+              <div class="doctorStat">
+                <div class="statInfo">
+                  <h2>Cost per consult</h2>
+                  <h2>{{doctor.doctorFee}}</h2>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <button class="reviews" [routerLink]="['/reviewsDoctor', id]">See Reviews</button>
+
+      </main>
+    </div>
+  </mat-drawer-content>
+
+</mat-drawer-container>

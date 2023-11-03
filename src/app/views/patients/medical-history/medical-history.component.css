@@ -1,0 +1,156 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer{
+  width: 260px;
+  background: #E0E0E0;
+}
+
+mat-drawer-container{
+  height: 100%;
+}
+.title {
+  font-size: 35px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 150px;
+  margin-top:30px;
+}
+.rectangle-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rectangle {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.patient-details {
+  display: flex;
+  align-items: center;
+}
+
+.patient-photo {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #0093AB;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.patient-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.patient-name {
+  margin-left: 10px;
+  font-size: 27px;
+}
+
+.patient-weight {
+  padding: 10px;
+}
+
+
+.rectangle {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 0px;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.min_rectangle {
+  background-color: #0093AB;
+  border: 2px solid #0093AB;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  grid-column: 1 / span 3;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.attribute-image {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.attribute-label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.title_allergies{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 230px;
+  margin-top:30px;
+}
+.allergies-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  margin: 0 auto;
+}
+
+.allergy-item {
+  background-color: #F1F1F1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 4px;
+  margin-left: 220px;
+  color: #d7b456;
+  font-size: 20px;
+}
+
+.title_pathological {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 230px;
+  margin-top: 30px;
+}
+
+.pathologicals-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  margin: 0 auto;
+}
+
+.pathological-item {
+  background-color: #F1F1F1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 4px;
+  margin-left: 220px;
+  color: #a10227;
+  font-size: 20px;
+}

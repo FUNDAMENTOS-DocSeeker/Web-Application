@@ -1,0 +1,117 @@
+.profile-container{
+  width: 80%;
+  align-items: center;
+  display: flex;
+  border: 1px solid #717171;
+  border-radius: 20px;
+  margin: 40px auto;
+
+}
+.img-doctor {
+  width: 250px;
+  height: 250px;
+  border: 2px solid #0093AB;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  margin: 30px 0 30px 90px;
+}
+
+.doctor-detail, .name{
+  flex-basis: 100%;
+}
+
+.doctor-information{
+  margin-top: 30px;
+  font-size: 17px;
+  flex-basis: 25%;
+}
+
+.edit-button {
+  flex-basis: 15%;
+  margin-top: 30px;
+  font-size: 16px;
+  padding: 5px;
+  background-color: #0093AB;
+  color: white;
+  border-color: #0093AB;
+  border-radius: 5px;
+  transition: 2s;
+}
+
+.more-button{
+  background-color: #0093AB;
+  color: white;
+  border-color: #0093AB;
+  border-radius: 5px;
+  transition: 2s;
+  padding: 10px;
+  font-size: 16px;
+  width: 120px;
+}
+
+.more-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.gray{
+  color: gray;
+  font-size: 22px;
+}
+
+.more-button:hover{
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.userCareer{
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 80%;
+  margin-left: 170px;
+}
+
+.infoBlock{
+  width: 50%;
+  border: 1px solid #505050;
+  border-radius: 15px;
+  padding: 2rem;
+}
+
+.infoBlock-description{
+  font-size: 18px;
+}
+
+.edit-button:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.doctor-info{
+  margin-left: 120px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.name{
+  margin-left: 15px;
+  font-size: 40px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.doctor-detail{
+  margin-top: 5px;
+  font-size: 18px;
+  width: 100%;
+  flex-basis: 50%;
+}
+
+.mat-icon{
+  vertical-align: middle;
+  margin-right: 10px;
+  color: #0093AB;
+}

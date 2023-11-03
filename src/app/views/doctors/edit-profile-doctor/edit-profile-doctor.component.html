@@ -1,0 +1,77 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar-doctor></app-sidebar-doctor>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="title-container" routerLink="/profileDoctor">
+      <h3 class="title"> Personal Information</h3>
+    </div>
+    <br>
+
+    <div class="content-container">
+      <div class="img-patient">
+        <img [src]="currentDoctor.photo" alt="Patient Photo">
+      </div>
+
+      <div class="form-container">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Edit</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field class="example-mid-width">
+              <mat-label>Name</mat-label>
+              <input type="string" matInput placeholder="Name" value="" [(ngModel)]="currentDoctor.name" required/>
+              <mat-error *ngIf="name.errors?.['required']">
+                Name is required
+              </mat-error>
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="example-mid-width-confirm">
+              <mat-label>Speciality</mat-label>
+              <input type="string" matInput placeholder="Speciality" value="" [(ngModel)]="currentDoctor.speciality" required/>
+              <mat-error *ngIf="speciality.errors?.['required']">
+                Speciality is required
+              </mat-error>
+              <mat-icon matSuffix>monitor_heart</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="example-mid-width">
+              <mat-label>DoctorFee</mat-label>
+              <input type="string" matInput placeholder="DoctorFee" value="" [(ngModel)]="currentDoctor.doctorFee" required/>
+              <mat-error *ngIf="doctorFee.errors?.['required']">
+                DoctorFee is required
+              </mat-error>
+              <mat-icon matSuffix>money</mat-icon>
+            </mat-form-field>
+
+
+            <mat-form-field class="example-mid-width-confirm">
+              <mat-label>ExperienceYears</mat-label>
+              <input type="string" matInput placeholder="experienceYears" value="" [(ngModel)]="currentDoctor.experienceYears" required/>
+              <mat-error *ngIf="experienceYears.errors?.['required']">
+                ExperienceYears is required
+              </mat-error>
+              <mat-icon matSuffix>face</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Description</mat-label>
+              <textarea class="description" matInput placeholder="Description" [(ngModel)]="currentDoctor.description" required></textarea>
+              <mat-error *ngIf="description.errors?.['required']">
+                Description is required
+              </mat-error>
+              <mat-icon matSuffix>call</mat-icon>
+            </mat-form-field>
+
+            <button mat-button color="primary" (click)="update()">Save</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+    </div>
+    <br><br><br>
+  </mat-drawer-content>
+</mat-drawer-container>

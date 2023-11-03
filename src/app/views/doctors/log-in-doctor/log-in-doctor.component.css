@@ -1,0 +1,123 @@
+.login-container{
+  display: flex;
+  width: 80%;
+  margin: 6rem auto;
+  gap: 2rem;
+}
+.card-login{
+  border: 2px solid #0093AB;
+  border-radius: 30px;
+  padding: 4rem;
+}
+img{
+  border-radius: 50px;
+}
+
+.example-card {
+  max-width: 470px;
+}
+
+.center-content {
+  text-align: -webkit-center;
+}
+
+.example-full-width {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.example-mid-width{
+  margin-top: 10px;
+  width: 50%;
+}
+
+.example-mid-width-confirm{
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 47%;
+}
+.mat-button{
+  margin-top: 10px;
+  width: 100%;
+  color: white;
+  height: 40px;
+  background-color: #faf5f5;
+}
+
+@media screen and (max-width: 1600px){
+  .login-container{
+    display: flex;
+    width: 90%;
+    margin: 3rem auto;
+    gap: 2rem;
+  }
+
+  .card-login{
+    border: 2px solid #0093AB;
+    border-radius: 30px;
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 1780px){
+
+  .login-container{
+    display: flex;
+    width: 80%;
+    margin: 3rem auto;
+    gap: 2rem;
+  }
+
+  .card-login{
+    border: 2px solid #0093AB;
+    border-radius: 30px;
+    padding: 2rem;
+  }
+
+  .example-card {
+    max-width: 90%;
+  }
+
+  .example-mid-width{
+    margin-top: 5px;
+    width: 95%;
+  }
+
+  .example-mid-width-confirm{
+    margin-top: 5px;
+    width: 95%;
+    margin-right: -10px;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .example-card {
+    max-width: 90%;
+  }
+
+  .example-mid-width{
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .example-mid-width-confirm{
+    margin-top: 5px;
+    width: 100%;
+    margin-right: -10px;
+  }
+
+  .login-container{
+    display: flex;
+    width: 50%;
+    margin: 2rem auto;
+    gap: 2rem;
+  }
+  .card-login{
+    border: 2px solid #0093AB;
+    border-radius: 30px;
+  }
+
+  img{
+    display: none;
+  }
+}

@@ -1,0 +1,48 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar-doctor></app-sidebar-doctor>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="wrapper">
+      <div class="title-container">
+        <button mat-fab class="return-button" color="basic" [routerLink]="[]">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h1>Add historical record for {{patient.name}}</h1>
+      </div>
+
+      <div class="information-container">
+        <div>
+          <h2>Check the historical data of {{patient.name}}</h2>
+          <mat-card>
+            <div class="row-container">
+              <div class="column-container1">
+                <h2>Date</h2>
+                <mat-form-field class="form-camp">
+                  <mat-label>Choose a date</mat-label>
+                  <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker touchUi #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+            </div>
+            <div class="column-container3">
+              <h2>What was the appointment about</h2>
+              <mat-form-field class="example-full-width">
+                <mat-label>Description</mat-label>
+                <textarea class="description" matInput placeholder="Description" [(ngModel)]="description" required></textarea>
+              </mat-form-field>
+            </div>
+
+            <div class="publish-container">
+              <button mat-button class="publish-button" (click)="saveHistoricalRecord()" [routerLink]="['/listPatientsMedicalHistory', patient.id]">Save</button>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

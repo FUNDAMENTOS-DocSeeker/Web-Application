@@ -1,0 +1,100 @@
+.go-payment-container {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  width: 600px;
+  background-color: #8dbfc7;
+  border: 1px solid black;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: none;
+  transition: all .2s;
+  margin: 0 5rem;
+}
+.go-payment-container:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+  color: #0093AB;
+  background-color: #0093AB;
+  border: 1px solid #0093AB;
+}
+.first_box {
+  width: 200px;
+  height: 100%;
+  background-color: #a0dee8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.date-text {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+}
+
+.time-text {
+  font-size: 20px;
+  position:absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.second_box {
+  flex: 1;
+  height: 100%;
+  display: flex;
+}
+
+.left-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.dr-name {
+  font-size: 25px;
+  margin-bottom: 25px;
+
+  color:white;
+}
+
+.disease {
+  font-size: 25px;
+  margin-bottom: 25px;
+
+  color:white;
+}
+
+.payment {
+  font-size: 25px;
+
+  color:white;
+}
+
+.right-column {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  font-size: 15px;
+  cursor: pointer;
+}

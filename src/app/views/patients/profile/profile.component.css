@@ -1,0 +1,76 @@
+.profile-container{
+  width: 80%;
+  align-items: center;
+  display: flex;
+  border: 1px solid #717171;
+  border-radius: 20px;
+  margin: 40px auto;
+
+}
+.img-patient {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #0093AB;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  margin: 30px 0 30px 70px;
+}
+
+.patient-info{
+  margin-left: 120px;
+}
+
+.name{
+  margin-left: 15px;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.patient-detail{
+  margin-top: 18px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.mat-icon{
+  vertical-align: middle;
+  margin-right: 10px;
+  color: #0093AB;
+}
+
+.additionalLinksIcon{
+  height: 70px;
+  width: 60px;
+  display: flex;
+  align-self: center;
+}
+
+.additionalLinksIcon-med{
+  height: 70px;
+  width: 60px;
+  display: flex;
+  align-self: center;
+}
+
+.additionalLinks{
+  border: 1px solid #505050;
+  border-radius: 1rem;
+  display: flex;
+  width: 75%;
+  padding: 0 1%;
+  margin: 15px auto;
+  transition: 1s;
+}
+
+.additionalLinks:hover{
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.additionalLinksText {
+  margin-top: 15px;
+  margin-left: 50px;
+}
+
+

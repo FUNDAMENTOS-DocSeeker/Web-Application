@@ -1,0 +1,48 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="container">
+      <h1>Prescriptions</h1>
+      <mat-card class="recommendations-card" style="width: 90%;">
+        <div class="recommendations-card-text">
+          <img class="doctorImg" src="https://static.vecteezy.com/system/resources/previews/006/037/586/original/doctor-linear-icon-medical-worker-practitioner-scientist-thin-line-illustration-contour-symbol-isolated-outline-drawing-vector.jpg" alt="profile image"/>
+            <div class="doctorInfo">
+              <div class="doctorPrincipal">
+                <h1>{{doctor.name}}</h1>
+                <h2>{{doctor.speciality}}</h2>
+              </div>
+            </div>
+        </div>
+      </mat-card>
+
+      <div class="cards" style="display: flex; justify-content: space-between; width: 90%;">
+        <mat-card class="medicine-card" style="width: 30%; min-height: 50%;">
+          <h2>Medicine</h2>
+          <h3>{{ prescription.medicineName }}</h3>
+        </mat-card>
+        <mat-card class="dose-card" style="width: 30%; min-height: 40%;">
+          <h2 class="h2-dose">Dose</h2>
+          <h3><span class="index-number">{{ prescription.medicineDosage }}</span> Reminders</h3>
+          <div class="meal-hours-wrapper">
+              <div class="meal-hours">
+                <span class="duration"> Duration: {{ prescription.medicineDuration }}</span>
+              </div>
+
+            <span class="spacer"></span>
+          </div>
+        </mat-card>
+        <mat-card class="where-to-get-it-card" style="width: 30%; min-height: 40%;">
+          <h2>Where to get it?</h2>
+          <div class="logos-container">
+            <img src="assets/images/inkafarmaLogo.png" alt="Inkafarma-Logo" class="logo-image">
+            <img src="assets/images/farmaciaUniversalLogo.png" alt="Farmacia-Universal-Logo" class="logo-image">
+            <img src="assets/images/mifarmaLogo.png" alt="Mifarma-Logo" class="logo-image">
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

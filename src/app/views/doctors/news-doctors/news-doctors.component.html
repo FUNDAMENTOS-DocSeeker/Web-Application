@@ -1,0 +1,28 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar-doctor></app-sidebar-doctor>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="container">
+      <h1>News</h1>
+      <div class="content-search">
+        <mat-form-field class="content-search" >
+          <mat-label>search</mat-label>
+          <button matSuffix mat-button [disabled]="true"><mat-icon >search</mat-icon></button>
+          <input type="text" matInput placeholder="Search">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row wrap" fxLayoutGap="30px grid">
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let news of newsList">
+          <app-new-card [routerLink]="['/listNewsDoctors',news.id]"
+                        [imageNews]="news.imageUrl"
+                        [title]="news.title"
+                        [description]="news.description">
+          </app-new-card>
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+
+</mat-drawer-container>

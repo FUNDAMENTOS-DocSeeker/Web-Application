@@ -1,0 +1,102 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer {
+  width: 260px;
+  background: #E0E0E0;
+}
+
+mat-drawer-container {
+  height: 100%;
+}
+
+.title-container,
+.information-container {
+  width: 60%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.title-container {
+  margin-right: 3%;
+  display: flex;
+  align-self: center;
+}
+
+.information-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  margin-left: 7%;
+}
+
+.row-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column-container1 {
+  display: flex;
+  flex-direction: column;
+}
+.column-container2 {
+  margin-top: 1%;
+  margin-right: 15%;
+  margin-bottom: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.column-container3 {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  display: flex;
+  flex-direction: column;
+}
+
+.column-container3 textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.return-button {
+  font-weight: bold;
+}
+
+h1 {
+  margin-left: 5%;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.publish-container {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.publish-button {
+  margin-bottom: 2%;
+  color: white !important;
+  font-weight: lighter;
+  background-color: #0093AB;
+  width: 20%;
+}
+
+mat-card{
+  background-color: #8dbfc7;
+  border: #0093AB 4px;
+  padding: 1rem;
+}

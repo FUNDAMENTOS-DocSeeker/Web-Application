@@ -1,0 +1,115 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer{
+  width: 260px;
+  background: #E0E0E0;
+}
+
+mat-drawer-container{
+  height: 100%;
+}
+.patientReviewCard, .patientsReviews{
+  margin: 2rem;
+}
+h1{
+  margin: 2rem 8rem;
+  font-weight: bold;
+  font-size: 30px;
+}
+.card {
+  /*border: 3px solid red;*/
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1% 0;
+}
+.buttonContainer{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.button{
+  background-color: #0093AB;
+  padding: 1.5rem 3rem;
+  border-radius: 20px;
+  border: none;
+  font-size: 20px;
+  transition: all .2s;
+
+}
+.button:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+  color: #0093AB;
+  background-color: white;
+  border: 1px solid #0093AB;
+}
+.errorReview{
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-size: 200%;
+}
+.errorReview i{
+  font-size: 400%;
+}
+.warningIcon{
+  width: 150px;
+}
+.doctorCard {
+  border: 3px solid #717171;
+  padding: .5% 0;
+  border-radius: 15px;
+  margin: 1rem;
+}
+span{
+  margin-left: 1rem;
+  font-weight: bold;
+}
+.profilePhotoContainer {
+  width: 20%;
+  display: flex;
+  border: 3px solid #2980B9;
+  object-fit: cover;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.profilePhotoContainer img {
+  width: 100%;
+}
+.info {
+  width: 40%;
+}
+.name {
+  font-weight: bold;
+}
+.averageScore {
+  /*border: 3px solid rebeccapurple;*/
+  display: flex;
+  align-items: center;
+}
+.averageScore .starIcon {
+  margin-right: 20px;
+}
+.separatorLine {
+  border: 1px solid #717171;
+  background-color: #717171;
+}
+@media (max-width: 480px) {
+  .card{
+    flex-direction: column;
+    margin: 2rem;
+    gap: 1rem;
+    padding: 2rem;
+    border-bottom: 1px solid black;
+  }
+  .profilePhotoContainer{
+    width: 40%;
+  }
+}

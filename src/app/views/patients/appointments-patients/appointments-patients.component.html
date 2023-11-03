@@ -1,0 +1,31 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar-doctor></app-sidebar-doctor>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <h1 class="title">Appointment for {{ patient?.name }}</h1>
+
+    <div class="patient-details">
+      <div class="row">
+        <div class="col">
+          <img [src]="patient?.photo" alt="Patient Photo" class="patient-photo">
+        </div>
+        <div class="col">
+          <div class="patient-info">
+            <div class="info-item">
+              <span class="label label-large">Name:  </span>
+              <span class="value value-large">{{ patient?.name }}</span>
+            </div>
+            <div class="info-item">
+              <span class="label label-large">Allergies:</span>
+              <ul>
+                <li *ngFor="let allergy of medicalInformation?.allergies" class="value value-large">●{{ allergy.allergie }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

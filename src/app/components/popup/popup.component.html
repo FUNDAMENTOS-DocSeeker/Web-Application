@@ -1,0 +1,11 @@
+<button class="btn" (click)="activarAgregarObjeto()" mat-button color="primary">Confirm</button>
+
+<div class="popup-container" *ngIf="popupVisible">
+  <div class="popup-content">
+    <button class="close-button" (click)="closePopup()">
+      <img [src]="closeButtonImg" alt="Cerrar ventana emergente">
+    </button>
+    <img [src]="imageSrc" alt="Imagen emergente" style="width: 250px; height: 250px;" />
+    <p>{{ popupText }}</p>
+  </div>
+</div>

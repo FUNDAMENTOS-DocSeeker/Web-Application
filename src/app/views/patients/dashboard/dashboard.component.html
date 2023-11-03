@@ -1,0 +1,59 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <h1 class="patientName">Welcome, {{currentPatient.name}}</h1>
+
+    <div class="carousel-container">
+      <div *ngFor="let photo of news; let i=index">
+
+        <h2 *ngIf="selectedIndex===i" class="image-title">{{photo.title}}</h2>
+
+        <img [src]="photo.imageUrl" alt="{{photo.title}}"
+           [ngClass]="{'image-active': selectedIndex === i}">
+     </div>
+
+      <div *ngIf="indicators" class="carousel-dot-container">
+        <span *ngFor="let dot of news; let i=index" class="dot"
+            [ngClass]="{'active': selectedIndex === i}"
+              (click)="selectImage(i)"
+        >
+        </span>
+      </div>
+
+    </div>
+
+    <h1 class="question">What do you need?</h1>
+
+    <div class="cards">
+      <div routerLink="/listDoctors" class="card">
+        <img class="appointment_option" src="assets/images/menu-doctor.png">
+        <br>
+        <div class="option_name">
+          <a>Doctors</a>
+        </div>
+      </div>
+
+      <div [routerLink]="['/medicalHistory', currentPatient.id]" class="card">
+        <img class="appointment_option" src="assets/images/menu-medic.png">
+        <br>
+        <div class="option_name">
+          <a>Medical<br>History</a>
+        </div>
+      </div>
+      <div routerLink="/prescriptions" class="card">
+        <img class="appointment_option" src="assets/images/menu-prescription.png">
+        <br>
+        <div class="option_name">
+          <a>Prescription</a>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </mat-drawer-content>
+</mat-drawer-container>

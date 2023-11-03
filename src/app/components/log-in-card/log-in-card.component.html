@@ -1,0 +1,115 @@
+<div class="center-content">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Log In</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="Login">
+          <mat-form-field class="example-full-width">
+            <mat-label>DNI</mat-label>
+            <input type="string" matInput placeholder="Dni" value="" [(ngModel)]="patient.dni" required/>
+            <mat-error *ngIf="dni.errors?.['required']">
+              Dni is required
+            </mat-error>
+            <mat-error *ngIf="dni.errors?.['minlength']">
+              You must enter a correct Dni
+            </mat-error>
+            <mat-icon matSuffix>badge</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Password" [(ngModel)]="patient.password" required/>
+            <mat-error *ngIf="password.errors?.['required']">
+              Password is required
+            </mat-error>
+            <mat-error *ngIf="signInForm.get('password')?.hasError('minLength') && signInForm.get('password')?.touched">
+              Password must be at least 8 characters length
+            </mat-error>
+            <mat-icon matSuffix>vpn_key</mat-icon>
+          </mat-form-field>
+          <button mat-button color="primary" (click)="login()">Log In</button>
+        </mat-tab>
+
+
+        <mat-tab label="Register">
+          <mat-form-field class="example-full-width">
+            <mat-label>Dni</mat-label>
+            <input type="string" matInput placeholder="Dni" value="" [(ngModel)]="patient.dni" required/>
+            <mat-error *ngIf="dni.errors?.['required']">
+              Dni is required
+            </mat-error>
+            <mat-icon matSuffix>badge</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input type="string" matInput placeholder="Name" value="" [(ngModel)]="patient.name" required/>
+            <mat-error *ngIf="name.errors?.['required']">
+              Name is required
+            </mat-error>
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="example-mid-width">
+            <mat-label>Birthday</mat-label>
+            <input type="date" matInput placeholder="Birthday" value="" [(ngModel)]="patient.birthday" required/>
+            <mat-error *ngIf="signInForm.controls['birthday'].errors?.['required']">
+              Birthday is required
+            </mat-error>
+            <mat-icon matSuffix>calendar_today</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="example-mid-width-confirm">
+            <mat-label>Cellphone</mat-label>
+            <input type="tel" matInput placeholder="Cellphone" value="" [(ngModel)]="patient.cellphone" required/>
+            <mat-error *ngIf="cellphone.errors?.['required']">
+              Cellphone is required
+            </mat-error>
+            <mat-icon matSuffix>call</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="example-mid-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Email" value="" [(ngModel)]="patient.email" required/>
+            <mat-error *ngIf="email.errors?.['required']">
+              Email is required
+            </mat-error>
+            <mat-icon matSuffix>mail</mat-icon>
+          </mat-form-field>
+
+          <!--<mat-form-field class="example-mid-width-confirm">
+            <mat-label>Gender</mat-label>
+            <mat-select [(ngModel)]="patient.gender" name="Gender" value = "" required>
+              <mat-option *ngFor="let option of genderOptions" [value]="option.value">{{ option.label }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="signInForm.controls['gender'].errors?.['required']">
+              Gender is required
+            </mat-error>
+          </mat-form-field> -->
+
+          <mat-form-field class="example-mid-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Password" [(ngModel)]="patient.password" required>
+            <mat-error *ngIf="password.errors?.['required']">
+              Password is required
+            </mat-error>
+            <mat-icon matSuffix>vpn_key</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="example-mid-width-confirm">
+            <mat-label>Confirm Password</mat-label>
+            <input type="password" matInput placeholder="Confirm Password" [(ngModel)]="rpassword" required>
+            <mat-error *ngIf="rpassword">
+              Confirmation Password is required
+            </mat-error>
+            <mat-icon matSuffix>vpn_key</mat-icon>
+          </mat-form-field>
+
+          <button mat-button color="primary" (click)="register()">Register</button>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

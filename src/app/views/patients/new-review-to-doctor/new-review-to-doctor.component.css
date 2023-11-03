@@ -1,0 +1,99 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer{
+  width: 260px;
+  background: #E0E0E0;
+}
+
+mat-drawer-container{
+  height: 100%;
+}
+
+.title-container, .information-container {
+  width: 30%;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.title-container{
+  margin-right: 3%;
+  display: flex;
+  align-self: center;
+}
+
+.information-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  margin-left: 7%;
+}
+
+.return-button{
+  font-weight: bold;
+}
+
+h1{
+  margin-left: 5%;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.doctorName{
+  font-size: 28px;
+  font-weight: lighter;
+}
+
+.speciality{
+  margin-top: 2%;
+  font-size: 25px;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+
+.stars{
+  font-weight: bold;
+  font-size: 25px;
+  border-bottom: 1px solid black;
+}
+
+.description{
+  font-size: 25px;
+  border-bottom: 1px solid black;
+}
+
+.review-field{
+  width: 100%;
+}
+igc-rating {
+  margin-left: 27%;
+  transform: scale(2.2);
+  margin-bottom: 5%;
+}
+
+igc-rating::part(symbols) {
+  gap: 30px;
+}
+
+.publish-container {
+  margin-left: 45%;
+  color: white;
+}
+
+.publish-button{
+  color: white !important;
+  font-weight: lighter;
+  background-color: #0093AB;
+  width: 190%;
+  height: 200%;
+}

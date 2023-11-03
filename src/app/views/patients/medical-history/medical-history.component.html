@@ -1,0 +1,50 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <h1 class="title">Medical History</h1>
+    <div class="rectangle-container">
+        <div class="patient-details">
+          <div class="patient-photo">
+            <img [src]="currentPatient.photo" alt="Patient Photo">
+          </div>
+          <div class="patient-name">
+            {{ currentPatient.name }}
+          </div>
+        </div>
+    </div>
+
+
+    <div class="rectangle">
+      <div class="min_rectangle">
+        <div class="title_inf">General Information</div>
+      </div>
+      <div class="column">
+        <img src="assets/images/height.png" alt="Height Image" class="attribute-image">
+        <div class="attribute-label">Height: {{ medicalInformation.height }} m</div>
+      </div>
+      <div class="column">
+        <img src="assets/images/weight.png" alt="Weight Image" class="attribute-image">
+        <div class="attribute-label">Weight: {{ medicalInformation.weight }} Kg</div>
+      </div>
+      <div class="column">
+        <img src="assets/images/body.png" alt="Body Mass Image" class="attribute-image">
+        <div class="attribute-label">Body Mass: {{ medicalInformation.bodyMass }} IMC</div>
+
+      </div>
+    </div>
+
+    <div class="title_allergies">Allergies</div>
+    <div class="allergies-container">
+      <ng-container *ngFor="let allergy of medicalInformation.allergies">
+        <div class="allergy-item"> ●{{ allergy}}</div>
+      </ng-container>
+    </div>
+
+
+
+  </mat-drawer-content>
+
+</mat-drawer-container>

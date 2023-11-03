@@ -1,0 +1,32 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="wrapper">
+      <div class="title-container">
+        <button mat-fab class="return-button" color="basic" [routerLink]="['/reviewsDoctor', id]">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h1>New Review</h1>
+      </div>
+      <div class="information-container">
+        <div>
+          <h2 class="speciality">{{doctor.speciality}}</h2>
+          <h2 class="doctorName name">{{doctor.name}}</h2>
+          <h2 class="stars">Stars</h2>
+          <igc-rating value="selectedValue" step=".5" size="large" hover-preview ></igc-rating>
+          <h2 class="description">Description</h2>
+          <mat-form-field class="review-field">
+            <input matInput placeholder="Enter your review here" [(ngModel)]="review">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="publish-container">
+        <button mat-button class="publish-button" (click)="publishReview()" [routerLink]="['/reviewsDoctor', id]">Publish</button>
+      </div>
+
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

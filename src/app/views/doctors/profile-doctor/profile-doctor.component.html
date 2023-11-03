@@ -1,0 +1,81 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar-doctor></app-sidebar-doctor>
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <div class="profile-container">
+
+      <div class="img-doctor">
+        <img [src]="currentDoctor.profilePhoto" alt="Doctor Photo">
+      </div>
+
+
+      <div class="doctor-info">
+
+        <h1 class="name">{{ currentDoctor.name }}</h1>
+
+        <a class="doctor-detail"  mat-list-item>
+          <mat-icon>monitor_heart</mat-icon> {{ currentDoctor.speciality }}
+        </a>
+
+        <a class="doctor-detail"  mat-list-item>
+          <mat-icon>person</mat-icon> Patients: {{ currentDoctor.patientsAssisted }}
+        </a>
+
+
+        <a class="doctor-information"  mat-list-item>
+          BirthDate
+          <br>
+          {{currentDoctor.birthDate}}
+        </a>
+
+        <a class="doctor-information"  mat-list-item>
+          Years exp.
+          <br>
+          {{ currentDoctor.experienceYears}}
+        </a>
+
+        <a class="doctor-information"  mat-list-item>
+          S/ Price
+          <br>
+          {{ currentDoctor.doctorFee}}
+        </a>
+
+        <button class="edit-button" routerLink="/editProfileDoctor">Edit</button>
+
+      </div>
+
+    </div>
+
+    <br>
+    <div class="userCareer">
+
+      <div class="infoBlock">
+        <h2 class="gray">Description</h2>
+        <div class="infoBlock-description">
+          <p>{{currentDoctor.description}}</p>
+        </div>
+      </div>
+
+      <div class="infoBlock">
+        <h2 class="gray">  Score: {{promedioCustomerScore}}</h2>
+        <div class="patientReviewCard" *ngFor="let review of reviewsToDoctor; let i = index" >
+          <app-review *ngIf="i < 2"
+            [namePatient]="review.customerName"
+            [reviewDescription]="review.description"
+            [score]="review.rating">
+          </app-review>
+        </div>
+        <div class="more-button-container">
+          <button class="more-button" routerLink="/myReviews">More</button>
+        </div>
+      </div>
+
+    </div>
+
+    <br>
+    <br>
+  </mat-drawer-content>
+</mat-drawer-container>

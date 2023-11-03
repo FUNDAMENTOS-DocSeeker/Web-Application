@@ -1,0 +1,84 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer{
+  width: 260px;
+  background: #E0E0E0;
+}
+
+mat-drawer-container{
+  height: 100%;
+}
+h1 {
+  font-weight: bold;
+}
+
+.payment-form-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-column {
+  width: 50%;
+  padding: 20px;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* para alinear a la izquierda */
+  text-align: left;
+}
+
+.left-column > * {
+  padding-left: 60px;
+}
+
+
+.left-column h2,
+.left-column input,
+.left-column button,
+.left-column mat-checkbox {
+  margin-bottom: 40px;
+}
+.left-column p {
+  margin-bottom: 40px;
+
+
+}
+.right-column {
+  width: 50%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+button.mat-button {
+  margin-left: 20px;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1px;
+}
+
+.form-field label {
+  text-align:left;
+  margin-bottom: 1px;
+}
+
+.example-full-width {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  height: 15%;
+}
+
+.example-full-width mat-label,
+.example-full-width input {
+  margin-left: 0;
+  height: 100%;
+}

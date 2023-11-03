@@ -1,0 +1,16 @@
+<div class="go-payment-container">
+  <div class="first_box">
+    <div class="date-text">{{ dateText }}</div>
+    <div class="time-text">{{ timeText }}</div>
+  </div>
+  <div class="second_box">
+    <div class="left-column">
+      <div class="dr-name">Dr. {{ doctorName }}</div>
+      <div class="payment">{{ payment }}</div>
+    </div>
+    <div class="right-column">
+      <button (click)="goToPayment()">Go to payment ></button>
+    </div>
+  </div>
+</div>
+

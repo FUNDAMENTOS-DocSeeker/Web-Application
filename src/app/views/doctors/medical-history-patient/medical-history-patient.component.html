@@ -1,0 +1,45 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar-doctor></app-sidebar-doctor>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="container">
+      <h1>Medical History of {{currentPatient.name}}</h1>
+    </div>
+
+    <div class="profile-container">
+      <div class="img-patient">
+        <img [src]="currentPatient.photo" alt="Patient Photo">
+      </div>
+
+      <div class="patient-info">
+        <h1 class="name">{{ currentPatient.name }}</h1>
+
+        <a class="patient-detail"  mat-list-item>
+          <mat-icon>calendar_today</mat-icon> {{ currentPatient.birthday }}
+        </a>
+
+        <a class="patient-detail"  mat-list-item>
+          <mat-icon>call</mat-icon> {{ currentPatient.cellphone }}
+        </a>
+
+        <a class="patient-detail"  mat-list-item>
+          <mat-icon>mail</mat-icon> {{ currentPatient.email}}
+        </a>
+      </div>
+      <div class="buttonContainer" [routerLink]="['/newMedicalHistory', currentPatient.id]">
+        <a>
+          <mat-icon>add</mat-icon> Add medical record
+        </a>
+      </div>
+    </div>
+
+    <div *ngFor="let record of medicalHistory">
+      <div class="recordContainer">
+        <p>{{record.description}}</p>
+      </div>
+    </div>
+  </mat-drawer-content>
+
+</mat-drawer-container>

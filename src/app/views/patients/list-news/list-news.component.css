@@ -1,0 +1,11 @@
+
+.content-search{
+  display: flex;
+  justify-content: center;
+}
+
+.mat-form-field {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #0093AB;
+}

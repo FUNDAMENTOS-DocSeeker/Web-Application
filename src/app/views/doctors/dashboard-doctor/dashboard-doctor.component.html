@@ -1,0 +1,52 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar-doctor></app-sidebar-doctor>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <h1 class="doctorName">Welcome, {{currentDoctor.name}}</h1>
+
+    <div class="carousel-container">
+      <div *ngFor="let photo of news; let i=index">
+
+        <h2 *ngIf="selectedIndex===i" class="image-title">{{photo.title}}</h2>
+
+        <img [src]="photo.imageUrl" alt="{{photo.title}}"
+             [ngClass]="{'image-active': selectedIndex === i}">
+      </div>
+
+      <div *ngIf="indicators" class="carousel-dot-container">
+        <span *ngFor="let dot of news; let i=index" class="dot"
+              [ngClass]="{'active': selectedIndex === i}"
+              (click)="selectImage(i)"
+        >
+        </span>
+      </div>
+
+    </div>
+
+    <h1 class="question">What do you need?</h1>
+
+    <div class="cards">
+      <div routerLink="/myAppointments" class="card">
+        <img class="appointment_option" src="assets/images/schedule.png">
+        <br>
+        <div class="option_name">
+          <a>My Appointments</a>
+        </div>
+      </div>
+
+      <div routerLink="/listPatientsMedicalHistory" class="card">
+        <img class="appointment_option" src="assets/images/patientsHistory.png">
+        <br>
+        <div class="option_name">
+          <a>Medical<br>History</a>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </mat-drawer-content>
+</mat-drawer-container>

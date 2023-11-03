@@ -1,0 +1,78 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <div class="profile-container">
+      <div class="img-patient">
+        <img [src]="currentPatient.photo" alt="Patient Photo">
+      </div>
+
+      <div class="patient-info">
+        <h1 class="name">{{ currentPatient.name }}</h1>
+
+        <a class="patient-detail"  mat-list-item>
+          <mat-icon>calendar_today</mat-icon> {{ currentPatient.birthday }}
+        </a>
+
+        <a class="patient-detail"  mat-list-item>
+          <mat-icon>call</mat-icon> {{ currentPatient.cellphone }}
+        </a>
+
+        <a class="patient-detail"  mat-list-item>
+          <mat-icon>mail</mat-icon> {{ currentPatient.email}}
+        </a>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="additionalLinks" routerLink="/prescriptions">
+
+        <div class="additionalLinksIcon">
+          <img src="assets/images/img_492085-removebg-preview.png">
+        </div>
+
+        <div class="additionalLinksText">
+          <h2>Prescriptions</h2>
+          <h3>Check all your medications</h3>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="additionalLinks" routerLink="/medicalHistory/:id">
+
+      <div class="additionalLinksIcon-med">
+        <img src="assets/images/54-545786_questionnaire-symptoms-medical-history-doctor-health-medical-care-icon-png-removebg-preview.png">
+      </div>
+
+      <div class="additionalLinksText">
+        <h2>Medical History</h2>
+        <h3>Check all your medical history</h3>
+      </div>
+
+    </div>
+
+    <br>
+
+    <div class="additionalLinks" routerLink="/editProfile">
+
+      <div class="additionalLinksIcon">
+        <img src="assets/images/img_392174.png">
+      </div>
+
+      <div class="additionalLinksText">
+        <h2>Personal Information</h2>
+        <h3>Check or edit your personal information</h3>
+      </div>
+
+    </div>
+
+    <br>
+    <br>
+  </mat-drawer-content>
+</mat-drawer-container>
