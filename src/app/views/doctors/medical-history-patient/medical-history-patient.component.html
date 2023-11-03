@@ -21,7 +21,7 @@
         </a>
 
         <a class="patient-detail"  mat-list-item>
-          <mat-icon>call</mat-icon> {{ currentPatient.cell1 }}
+          <mat-icon>call</mat-icon> {{ currentPatient.cellphone }}
         </a>
 
         <a class="patient-detail"  mat-list-item>
@@ -37,8 +37,7 @@
 
     <div *ngFor="let record of medicalHistory">
       <div class="recordContainer">
-        <h1>{{record.date}}</h1>
-        <p>{{record.content}}</p>
+        <p>{{record.description}}</p>
       </div>
     </div>
   </mat-drawer-content>

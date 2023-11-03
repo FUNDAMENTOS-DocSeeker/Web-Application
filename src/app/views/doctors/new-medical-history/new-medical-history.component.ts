@@ -35,8 +35,6 @@ export class NewMedicalHistoryComponent {
 
     this.medicalService.getAll().subscribe((data: any): void => {
       this.medicalHistories = data;
-      this.medicalHistory = this.medicalHistories.find(medicalHistory => medicalHistory.idPatient == this.id);
-      console.log("Medical History: ", this.medicalHistory);
 
     this.newsSource.getSources('patients').subscribe((data: any): void => {
       this.patients = data;
@@ -50,31 +48,16 @@ export class NewMedicalHistoryComponent {
     const month = this.selectedDate.getMonth() + 1;
     const day = this.selectedDate.getDate();
     const idDate = `${year}/${month < 10 ? '0' + month : month}/${day < 10 ? '0' + day : day}`;
-    if(this.medicalHistory){
-      let newHistory = {
-        "date": idDate,
-        "content": this.description
-      }
-      this.medicalHistory["historial"].push(newHistory)
-      this.medicalService.update(this.medicalHistory.id, this.medicalHistory).subscribe((data: any): void => {
-        console.log("Medical HIstory PUT", data)
-      })
-    }
-    else{
+
       let newHistory = {
         "id": this.medicalHistories.length,
         "idPatient": this.id,
-        "historial": [
-          {
-            "id": 0,
-            "date": idDate,
-            "content": this.description
-          }
-        ]
-      }
+        "appointmentId": 0,
+        "description": this.description, }
+
       this.medicalService.create(newHistory).subscribe((data: any): void => {
         console.log("Medical HIstory POST new", data)
       })
     }
-  }
 }
+

@@ -13,15 +13,15 @@ export class SourcesService {
 
   // @ts-ignore
   getSources(endpoint: string): Observable<Object>{
-    return this.http.get(`http://localhost:8081/api/v1/${endpoint}`)
+    return this.http.get(`http://localhost:3000/${endpoint}`)
   }
   getByIdSources(endpoint: string, id: any): Observable<Object>{
-    return this.http.get(`http://localhost:8081/api/v1/${endpoint}/${id}`)
+    return this.http.get(`http://localhost:3000/${endpoint}/${id}`)
   }
   postSources(endpoint: string, newObject: any): Observable<Object>{
-    return this.http.post(`http://localhost:8081/api/v1/${endpoint}`, newObject)
+    return this.http.post(`http://localhost:3000/${endpoint}`, newObject)
   }
   updateSources(endpoint: string, id: any, newObject: any): Observable<Object>{
-    return this.http.put(`http://localhost:8081/api/v1/${endpoint}/${id}`, newObject)
+    return this.http.put(`http://localhost:3000/${endpoint}/${id}`, newObject)
   }
 }

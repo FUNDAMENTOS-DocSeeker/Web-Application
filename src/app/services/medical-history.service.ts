@@ -8,7 +8,7 @@ import { MedicalHistory } from '../interfaces/medical-history';
 })
 export class MedicalHistoryService {
 
-  basePath = "http://localhost:8087/api/v1/medical-histories"
+  basePath = "http://localhost:8080/api/v1/medical-histories"
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -34,6 +34,14 @@ export class MedicalHistoryService {
         retry(2),
         catchError(this.handleError));
   }
+
+  getByPatientId(patientId: number): Observable<MedicalHistory> {
+    return this.http.get<MedicalHistory>(`${this.basePath}/patient/${patientId}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
   getById(id: number): Observable<MedicalHistory> {
     return this.http.get<MedicalHistory>(`${this.basePath}/${id}`, this.httpOptions)
       .pipe(
