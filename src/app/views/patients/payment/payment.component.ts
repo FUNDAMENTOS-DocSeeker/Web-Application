@@ -86,8 +86,8 @@ export class PaymentComponent implements OnInit{
     this.newAppointment = {
       "id": this.dates.length,
       "date": this.route.snapshot.params['idDate'],
-      "startTime": "12:00",
-      "endTime": "15:00",
+      "startTime": this.route.snapshot.params['selectedHourStart'],
+      "endTime": this.route.snapshot.params['selectedHourEnd'],
       "doctorId": parseInt(this.route.snapshot.params['id']),
       "patientId": parseInt(this.currentPatient.id),
     }
