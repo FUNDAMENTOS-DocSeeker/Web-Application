@@ -3,7 +3,9 @@ import {map, Observable, shareReplay} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SourcesService} from "../../../services/sources.service";
+import {PatientService} from "../../../services/patient.service";
 import { MedicalHistoryService } from 'src/app/services/medical-history.service';
+
 
 @Component({
   selector: 'app-new-medical-history',
@@ -26,7 +28,8 @@ export class NewMedicalHistoryComponent {
   description = "";
 
 
-  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router, private medicalService: MedicalHistoryService) {
+
+  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router, private patientsServices: PatientService, private medicalService: MedicalHistoryService) {
     this.selectedDate = new Date();
   }
 
@@ -35,12 +38,13 @@ export class NewMedicalHistoryComponent {
 
     this.medicalService.getAll().subscribe((data: any): void => {
       this.medicalHistories = data;
+    })
 
-    this.newsSource.getSources('patients').subscribe((data: any): void => {
+
+
+    this.patientsServices.getById(this.id).subscribe((data: any): void => {
       this.patients = data;
-      this.patient = this.patients.find(patient => patient.id == this.id);
-      console.log("Patient: ", this.patient);
-    });
+
     });
   }
   saveHistoricalRecord(){

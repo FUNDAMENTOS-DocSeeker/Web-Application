@@ -39,16 +39,10 @@
     <div class="title_allergies">Allergies</div>
     <div class="allergies-container">
       <ng-container *ngFor="let allergy of medicalInformation.allergies">
-        <div class="allergy-item"> ●{{ allergy.allergie }}</div>
+        <div class="allergy-item"> ●{{ allergy}}</div>
       </ng-container>
     </div>
 
-    <div class="title_pathological">Pathological History</div>
-    <div class="pathologicals-container">
-      <ng-container *ngFor="let pathological of medicalInformation.pathologicals">
-        <div class="pathological-item"> ●{{ pathological.pathological }}</div>
-      </ng-container>
-    </div>
 
 
   </mat-drawer-content>

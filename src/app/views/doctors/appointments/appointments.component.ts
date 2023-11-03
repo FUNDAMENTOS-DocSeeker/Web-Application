@@ -6,7 +6,11 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {LogInService} from "../../../services/log-in.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+
+import {PatientService} from "../../../services/patient.service";
+
 import {SourcesService} from "../../../services/sources.service";
+
 @Component({
   selector: 'app-appointments',
   templateUrl: './appointments.component.html',
@@ -24,7 +28,8 @@ export class AppointmentsComponent {
   patients: Array<any> = [];
 
 
-  constructor(private breakpointObserver: BreakpointObserver, private appointmentSource: AppointmentService, private newsSource: SourcesService, private router: Router) {
+
+  constructor(private breakpointObserver: BreakpointObserver, private appointmentSource: AppointmentService, private patientsServices: PatientService, private newsSource: SourcesService, private router: Router) {
 
   }
   ngOnInit() {
@@ -36,9 +41,9 @@ export class AppointmentsComponent {
       this.dates = data;
       console.log("Sources dates: ", this.dates);
     });
-    this.newsSource.getSources('patients').subscribe((data: any): void => {
+    this.patientsServices.getAll().subscribe((data: any): void => {
       this.patients = data;
-      console.log("Sources patients: ", this.patients);
+
     });
   }
 
