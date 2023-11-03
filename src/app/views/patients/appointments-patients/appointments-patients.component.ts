@@ -20,6 +20,7 @@ export class AppointmentsPatientsComponent  implements OnInit {
   ngOnInit() {
     this.idPatient = this.route.snapshot.params['id'];
     this.patientsServices.getById(this.idPatient).subscribe((data: any): void => {
+      this.patient = data
       this.medicalInformation = data;
 
     });
