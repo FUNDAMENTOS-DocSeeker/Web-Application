@@ -13,7 +13,11 @@
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
       </mat-form-field>
-      <button (click)="navigateToAppointment()">Schedule an appointment</button>
+      <input [ngxTimepicker]="picker2" class="inputHours" [(ngModel)]="selectedHourStart">
+      <ngx-material-timepicker #picker2></ngx-material-timepicker>
+      <input [ngxTimepicker]="picker3" class="inputHours" [(ngModel)]="selectedHourEnd">
+      <ngx-material-timepicker #picker3></ngx-material-timepicker>
+      <button class="buttonAppointment" (click)="navigateToAppointment()">Schedule an appointment</button>
     </header>
     <div class="container">
       <main class="container">

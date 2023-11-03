@@ -4,7 +4,7 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {SourcesService} from "../../../services/sources.service";
 import {Router} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
-
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @Component({
   selector: 'app-doctor-profile',
@@ -21,7 +21,10 @@ export class DoctorProfileComponent implements OnInit{
   doctors: Array<any> = [];
   doctor: any;
   id="" ;
-  selectedDate: Date
+  selectedDate: Date;
+  selectedHourStart: any;
+  selectedHourEnd: any;
+
   constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {
     this.selectedDate = new Date();
   }
@@ -31,7 +34,10 @@ export class DoctorProfileComponent implements OnInit{
     const month = this.selectedDate.getMonth() + 1;
     const day = this.selectedDate.getDate();
     const idDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
-    this.router.navigate(['/dateAppointment', this.id, idDate]);
+    console.log("START", this.selectedHourStart)
+    console.log("end", this.selectedHourEnd)
+
+    this.router.navigate(['/payment', this.id, idDate, this.selectedHourStart, this.selectedHourEnd]);
   }
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
