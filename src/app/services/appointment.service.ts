@@ -8,7 +8,7 @@ import {Appointment} from "../interfaces/appointment";
 })
 export class AppointmentService {
 
-  basePath: string = 'http://localhost:8080/api/appointment';
+  basePath: string = 'http://localhost:8080/api/v1/appointments';
 
   httpOptions: {headers: HttpHeaders}={
     headers: new HttpHeaders({
