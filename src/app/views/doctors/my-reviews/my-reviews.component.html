@@ -33,8 +33,8 @@
       <div class="patientReviewCard" *ngFor="let review of reviewsToDoctor" >
         <app-review
           [namePatient]="review.customerName"
-          [reviewDescription]="review.customerReview"
-          [score]="review.customerScore">
+          [reviewDescription]="review.description"
+          [score]="review.rating">
 
         </app-review>
       </div>

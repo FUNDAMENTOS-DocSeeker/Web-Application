@@ -8,29 +8,29 @@
       <h1>Prescriptions</h1>
       <mat-card class="recommendations-card" style="width: 90%;">
         <div class="recommendations-card-text">
-          <h2 class="h2-recommendations">Recommendations</h2>
-          <h3 class="h3-recommendations"><span class="bold-text">Rest</span>{{ prescription.rest }}</h3>
-          <h3 class="h3-recommendations"><span class="bold-text">Drink</span>{{ prescription.drink }}</h3>
-          <h3 class="h3-recommendations"><span class="bold-text">Try comfort foods and drinks</span>{{ prescription.food }}</h3>
+          <img class="doctorImg" src="https://static.vecteezy.com/system/resources/previews/006/037/586/original/doctor-linear-icon-medical-worker-practitioner-scientist-thin-line-illustration-contour-symbol-isolated-outline-drawing-vector.jpg" alt="profile image"/>
+            <div class="doctorInfo">
+              <div class="doctorPrincipal">
+                <h1>{{doctor.name}}</h1>
+                <h2>{{doctor.area}}</h2>
+              </div>
+            </div>
         </div>
-        <img class="recommendations-card-image" src="assets/images/pill.png" alt="Pill Image">
       </mat-card>
 
       <div class="cards" style="display: flex; justify-content: space-between; width: 90%;">
-        <mat-card class="medicine-card" style="width: 30%; min-height: 40%;">
+        <mat-card class="medicine-card" style="width: 30%; min-height: 50%;">
           <h2>Medicine</h2>
-          <h3 *ngFor="let medicine of prescription.medicines">{{ medicine.medicine }}</h3>
+          <h3>{{ prescription.medicineName }}</h3>
         </mat-card>
         <mat-card class="dose-card" style="width: 30%; min-height: 40%;">
           <h2 class="h2-dose">Dose</h2>
-          <h3><span class="index-number">{{ prescription.numberDose }}</span> Reminders</h3>
+          <h3><span class="index-number">{{ prescription.medicineDosage }}</span> Reminders</h3>
           <div class="meal-hours-wrapper">
-            <ng-container *ngFor="let meal of prescription.meals; let i = index">
               <div class="meal-hours">
-                <span class="meal">{{ meal }}</span>
-                <span class="hours">{{ prescription.hours[i] }}</span>
+                <span class="duration"> Duration: {{ prescription.medicineDuration }}</span>
               </div>
-            </ng-container>
+
             <span class="spacer"></span>
           </div>
         </mat-card>

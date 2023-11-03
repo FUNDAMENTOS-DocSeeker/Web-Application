@@ -29,7 +29,7 @@
       "image": "https://ichef.bbci.co.uk/news/976/cpsprodpb/14E8E/production/_127264658_gettyimages-583690223.jpg.webp",
       "title": "Friends could be key to finding fitness motivation",
       "description": "Social interaction could be key to kick-starting a fitness regime, US research suggests.",
-      "info": "Exercising with a friend requires commitment and accountability, Andre Bates, of Barry's Bootcamp, which holds group exercise classes across the UK, says.\n\n\"It's very easy not to go and exercise when you're relying on yourself - but with a friend, you can use each other for motivation to make sure you stick at what you set out to do,\" he says.",
+      "info": "Exercising with a friend requires commitment and accountability, Andre Bates, of Barry's Bootcamp, which holds group exercise classes across the UK, says. It's very easy not to go and exercise when you're relying on yourself - but with a friend, you can use each other for motivation to make sure you stick at what you set out to do, he says.",
       "views": 3321
     },
     {
@@ -814,6 +814,66 @@
       "doctorId": 0,
       "date": "2023-06-29",
       "hourId": 0
+    },
+    {
+      "id": 23,
+      "idPatient": 0,
+      "doctorId": 0,
+      "date": "2023-10-19",
+      "hourId": 0
+    },
+    {
+      "id": 24,
+      "idPatient": 0,
+      "doctorId": 0,
+      "date": "2023-10-19",
+      "hourId": 0
+    },
+    {
+      "id": 25,
+      "idPatient": 0,
+      "doctorId": 0,
+      "date": "2023-10-19",
+      "hourId": 0
+    },
+    {
+      "id": 26,
+      "idPatient": 0,
+      "doctorId": 0,
+      "date": "2023-10-19",
+      "hourId": 0
+    },
+    {
+      "id": 27,
+      "date": "2023-10-19",
+      "startTime": "12:00",
+      "endTime": "15:00",
+      "doctorId": 0,
+      "patientId": 0
+    },
+    {
+      "id": 28,
+      "date": "2023-10-19",
+      "startTime": "12:00",
+      "endTime": "15:00",
+      "doctorId": 0,
+      "patientId": 0
+    },
+    {
+      "id": 29,
+      "date": "2023-10-25",
+      "startTime": "12:00",
+      "endTime": "15:00",
+      "doctorId": 2,
+      "patientId": 0
+    },
+    {
+      "id": 30,
+      "date": "2023-10-19",
+      "startTime": "12:00",
+      "endTime": "15:00",
+      "doctorId": 4,
+      "patientId": 0
     }
   ],
   "prescriptions": [

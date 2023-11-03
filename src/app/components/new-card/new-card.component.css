@@ -2,6 +2,10 @@
   max-width: 200px;
 }
 
+.mat-card-z4{
+  height: 400px;
+  width: 100%;
+}
 .content{
   padding-top: 25px;
 }

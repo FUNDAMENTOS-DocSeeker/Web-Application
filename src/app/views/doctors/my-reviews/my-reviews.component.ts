@@ -3,6 +3,7 @@ import {map, Observable, shareReplay} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SourcesService} from "../../../services/sources.service";
+import {ReviewsService} from "../../../services/reviews.service";
 @Component({
   selector: 'app-my-reviews',
   templateUrl: './my-reviews.component.html',
@@ -20,17 +21,17 @@ export class MyReviewsComponent implements OnInit{
   reviewsToDoctor: Array<any> = [];
   currentDoctor: any;
 
-  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private reviewSource: ReviewsService , private newsSource: SourcesService, private router: Router) {}
 
   ngOnInit() {
     this.currentDoctor = localStorage.getItem('currentDoctor');
     if (this.currentDoctor) {
       this.currentDoctor = JSON.parse(this.currentDoctor);
     }
-    this.newsSource.getSources('reviews').subscribe((data: any): void =>{
-      this.allreviews = data
-      this.reviewsToDoctor = this.allreviews.filter(review => review.idDoctor == this.currentDoctor.id);
+    this.reviewSource.getByDoctorId(Number(this.currentDoctor.id)).subscribe((data: any): void =>{
+      this.reviewsToDoctor = data
       console.log("Sources: ", this.reviewsToDoctor);
+
     })
   }
 }

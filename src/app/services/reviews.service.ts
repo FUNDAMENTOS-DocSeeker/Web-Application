@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
-import {News} from "../interfaces/news";
+import {Review} from "../interfaces/review";
 
 @Injectable({
   providedIn: 'root'
 })
-export class NewsService {
+export class ReviewsService {
 
-  basePath: string = 'http://localhost:8080/api/v1/news';
+  basePath: string = 'http://localhost:8080/api/v1/';
 
   httpOptions: {headers: HttpHeaders}={
     headers: new HttpHeaders({
@@ -30,8 +30,24 @@ export class NewsService {
   }
 
   //GET ALL
-  getAll():Observable<News>{
-    return this.http.get<News>(this.basePath,this.httpOptions)
+  getAll():Observable<Review>{
+    return this.http.get<Review>(this.basePath+"reviews",this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  getByDoctorId(doctorId: number):Observable<Review>{
+    return this.http.get<Review>(this.basePath  + "/reviews/" +"doctor/" + doctorId,this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  postReview(newObject: any): Observable<Object>{
+    return this.http.post<Review>(this.basePath+"reviews", newObject,this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
