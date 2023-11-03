@@ -40,8 +40,6 @@ export class NewMedicalHistoryComponent {
       this.medicalHistories = data;
     })
 
-
-
     this.patientsServices.getById(this.id).subscribe((data: any): void => {
       this.patients = data;
 
@@ -53,15 +51,15 @@ export class NewMedicalHistoryComponent {
     const day = this.selectedDate.getDate();
     const idDate = `${year}/${month < 10 ? '0' + month : month}/${day < 10 ? '0' + day : day}`;
 
-      let newHistory = {
-        "id": this.medicalHistories.length,
-        "idPatient": this.id,
-        "appointmentId": 0,
-        "description": this.description, }
+    let newHistory = {
+      "id": this.medicalHistories.length,
+      "idPatient": this.id,
+      "appointmentId": 0,
+      "description": this.description, }
 
-      this.medicalService.create(newHistory).subscribe((data: any): void => {
-        console.log("Medical HIstory POST new", data)
-      })
-    }
+    this.medicalService.create(newHistory).subscribe((data: any): void => {
+      console.log("Medical HIstory POST new", data)
+    })
+  }
 }
 

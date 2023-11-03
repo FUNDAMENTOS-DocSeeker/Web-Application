@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import { DoctorResource } from "../interfaces/doctor-resource";
-import {Patient} from "../interfaces/patient";
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +34,14 @@ export class DoctorsService {
   }
   getAll():Observable<DoctorResource>{
     return this.http.get<DoctorResource>(this.doctorsUrl,this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  getById(id: string):Observable<DoctorResource>{
+    return this.http.get<DoctorResource>(this.doctorsUrl+'/'+id,this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

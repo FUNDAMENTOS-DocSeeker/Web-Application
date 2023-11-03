@@ -3,6 +3,8 @@ import {Doctor} from "../../../interfaces/doctor";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LogInService} from "../../../services/log-in.service";
 import {SourcesService} from "../../../services/sources.service";
+import { DoctorsService } from '../../../services/doctors.service';
+import { DoctorResource } from 'src/app/interfaces/doctor-resource';
 
 @Component({
   selector: 'app-edit-profile-doctor',
@@ -10,48 +12,44 @@ import {SourcesService} from "../../../services/sources.service";
   styleUrls: ['./edit-profile-doctor.component.css']
 })
 export class EditProfileDoctorComponent {
-  doctor: Doctor={dni:'', password:'', name:'', area:'', description:'', patients:0, years:0, age:0, email:'', cost:0,
-    photo: "https://www.browardhealth.org/-/media/broward-health/placeholder/doctor-placeholder-male.jpg", education: [ {name: ''}],
-    hoursAvailable:[{id:0, hours: "9:00 AM - 10:00 AM"}, {id:1, hours:"10:30 AM - 12:00 PM"}, {id:2, hours:"15:30 PM - 17:00 PM"}]};
+  doctor: DoctorResource={id:0,name:'', email:'', password:'', dni:'', birthDate:'' , phoneNumber:'', speciality:'', description:'', experienceYears:'', patientsAssisted:'', doctorFee:'',
+    profilePhoto: "https://www.browardhealth.org/-/media/broward-health/placeholder/doctor-placeholder-male.jpg"};
   doctors: Array<any> = [];
   signInForm: FormGroup;
   currentDoctor: any;
   ngOnInit(){
-    this.newsSource.getSources('doctors').subscribe((data: any): void => {
-      this.doctors = data;
-      console.log("Sources: ", this.doctors);
-    });
+
     this.currentDoctor = localStorage.getItem('currentDoctor');
     if (this.currentDoctor) {
       this.currentDoctor = JSON.parse(this.currentDoctor);
     }
     console.log("User logged: ", this.currentDoctor);
   }
-  constructor(private loginService: LogInService, public builder: FormBuilder, public newsSource: SourcesService) {
+  constructor(private loginService: LogInService, public builder: FormBuilder, private doctorService: DoctorsService) {
     this.signInForm = this.builder.group({
       dni: ['',[Validators.required, Validators.minLength(8)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       name: ['',[Validators.required]],
-      area: ['',[Validators.required]],
-      age: ['',[Validators.required, Validators.min(24), Validators.max(80)]],
+      speciality: ['',[Validators.required]],
+      birthDate: ['',[Validators.required]],
       email: ['',[Validators.required, Validators.email]],
-      cost: ['', [Validators.required]],
-      years: ['', [Validators.required]],
+      doctorFee: ['', [Validators.required]],
+      experienceYears: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      education:['', Validators.required]
+      phoneNumber:['', Validators.required]
     })
   }
 
-  get cost(){
-    return this.signInForm.controls['cost']
+  get doctorFee(){
+    return this.signInForm.controls['doctorFee']
   }
 
-  get years(){
-    return this.signInForm.controls['years']
+  get experienceYears(){
+    return this.signInForm.controls['experienceYears']
   }
 
-  get education(){
-    return this.signInForm.controls['education']
+  get phoneNumber(){
+    return this.signInForm.controls['phoneNumber']
   }
 
   get description(){
@@ -65,38 +63,35 @@ export class EditProfileDoctorComponent {
   get email(){
     return this.signInForm.controls['email'];
   }
-  get area(){
-    return this.signInForm.controls['area'];
+  get speciality(){
+    return this.signInForm.controls['speciality'];
   }
 
   update() {
 
-    if (this.currentDoctor.email != '' && this.currentDoctor.area != '' && this.currentDoctor.name != '' && this.currentDoctor.years != ''
-      && this.currentDoctor.cost != '' && this.currentDoctor.education != '' && this.currentDoctor.description != '') {
+    if (this.currentDoctor.speciality != '' && this.currentDoctor.name != '' && this.currentDoctor.experienceYears != ''
+      && this.currentDoctor.doctorFee != '' && this.currentDoctor.description != '') {
       this.loginService.updateDoctor(this.currentDoctor, this.currentDoctor.id).subscribe();
     }
-    const doctorFound = this.doctors.find(doctor => doctor.id == this.currentDoctor.id);
-    if (doctorFound) {
-      console.log(111)
-      console.log('Doctor found:', doctorFound);
+    this.doctorService.getById(this.currentDoctor.id).subscribe((data: any): void => {
+      const doctorFound = data;
+      console.log("Sources: ", this.doctors);
       localStorage.setItem('currentDoctor', JSON.stringify(doctorFound));
-    }
+    });
 
     this.currentDoctor = {
       id: this.currentDoctor.id,
       dni: this.currentDoctor.dni,
       password: this.currentDoctor.password,
       name: this.currentDoctor.name,
-      area: this.currentDoctor.area,
+      speciality: this.currentDoctor.speciality,
       description: this.currentDoctor.description,
-      patients: this.currentDoctor.patients,
-      years: this.currentDoctor.years,
-      age: this.currentDoctor.age,
+      patientsAssisted: this.currentDoctor.patientsAssisted,
+      experienceYears: this.currentDoctor.experienceYears,
+      birthDate: this.currentDoctor.birthDate,
       email: this.currentDoctor.email,
-      cost: this.currentDoctor.cost,
-      photo: "https://www.browardhealth.org/-/media/broward-health/placeholder/doctor-placeholder-male.jpg",
-      education: [{name:'UPC'}] ,
-      hoursAvailable:[{id:0, hours: "9:00 AM - 10:00 AM"}, {id:1, hours:"10:30 AM - 12:00 PM"}, {id:2, hours:"15:30 PM - 17:00 PM"}]
+      doctorFee: this.currentDoctor.doctorFee,
+      profilePhoto: "https://www.browardhealth.org/-/media/broward-health/placeholder/doctor-placeholder-male.jpg",
     };
 
   }

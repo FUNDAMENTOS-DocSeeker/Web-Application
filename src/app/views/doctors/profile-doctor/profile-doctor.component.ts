@@ -40,7 +40,7 @@ export class ProfileDoctorComponent {
       this.promedioCustomerScore = this.calcularPromedioCustomerScore(this.reviewsToDoctor);
       console.log("Sources: ", this.reviewsToDoctor);
 
-    console.log("User logged: ", this.currentDoctor);
+      console.log("User logged: ", this.currentDoctor);
     })
   }
 

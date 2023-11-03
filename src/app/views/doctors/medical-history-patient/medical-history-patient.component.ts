@@ -8,6 +8,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import { MedicalHistoryService } from 'src/app/services/medical-history.service';
 import {MedicalHistory} from "../../../interfaces/medical-history";
+import { PatientService } from '../../../services/patient.service';
 @Component({
   selector: 'app-medical-history-patient',
   templateUrl: './medical-history-patient.component.html',
@@ -26,7 +27,7 @@ export class MedicalHistoryPatientComponent {
   id=0;
 
 
-  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService,private medicalService: MedicalHistoryService, private router: Router) {
+  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private PatientService: PatientService,private medicalService: MedicalHistoryService, private router: Router) {
 
   }
   ngOnInit() {
@@ -37,15 +38,15 @@ export class MedicalHistoryPatientComponent {
       this.currentDoctor = JSON.parse(this.currentDoctor);
     }
 
-    this.newsSource.getSources('patients').subscribe((data: any): void => {
+    this.PatientService.getAll().subscribe((data: any): void => {
       this.currentPatient = data.find((x: any) => x.id == this.id);
       console.log("PATIENT: ", this.currentPatient);
     })
 
     this.medicalService.getByPatientId(this.id).subscribe((data: any) =>{
-      this.medicalHistory = data;
-      console.log("Medical History:", this.medicalHistory);
-      console.log("description: ", this.medicalHistory[0].description)
+        this.medicalHistory = data;
+        console.log("Medical History:", this.medicalHistory);
+        console.log("description: ", this.medicalHistory[0].description)
       }
     )
 

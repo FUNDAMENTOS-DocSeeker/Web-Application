@@ -30,29 +30,29 @@
             </mat-form-field>
 
             <mat-form-field class="example-mid-width-confirm">
-              <mat-label>Area</mat-label>
-              <input type="string" matInput placeholder="Area" value="" [(ngModel)]="currentDoctor.area" required/>
-              <mat-error *ngIf="area.errors?.['required']">
-                Area is required
+              <mat-label>Speciality</mat-label>
+              <input type="string" matInput placeholder="Speciality" value="" [(ngModel)]="currentDoctor.speciality" required/>
+              <mat-error *ngIf="speciality.errors?.['required']">
+                Speciality is required
               </mat-error>
               <mat-icon matSuffix>monitor_heart</mat-icon>
             </mat-form-field>
 
             <mat-form-field class="example-mid-width">
-              <mat-label>Cost</mat-label>
-              <input type="string" matInput placeholder="Cost" value="" [(ngModel)]="currentDoctor.cost" required/>
-              <mat-error *ngIf="cost.errors?.['required']">
-                Cost is required
+              <mat-label>DoctorFee</mat-label>
+              <input type="string" matInput placeholder="DoctorFee" value="" [(ngModel)]="currentDoctor.doctorFee" required/>
+              <mat-error *ngIf="doctorFee.errors?.['required']">
+                DoctorFee is required
               </mat-error>
               <mat-icon matSuffix>money</mat-icon>
             </mat-form-field>
 
 
             <mat-form-field class="example-mid-width-confirm">
-              <mat-label>Years</mat-label>
-              <input type="number" matInput placeholder="Years" value="" [(ngModel)]="currentDoctor.years" required/>
-              <mat-error *ngIf="years.errors?.['required']">
-                Years is required
+              <mat-label>ExperienceYears</mat-label>
+              <input type="string" matInput placeholder="experienceYears" value="" [(ngModel)]="currentDoctor.experienceYears" required/>
+              <mat-error *ngIf="experienceYears.errors?.['required']">
+                ExperienceYears is required
               </mat-error>
               <mat-icon matSuffix>face</mat-icon>
             </mat-form-field>

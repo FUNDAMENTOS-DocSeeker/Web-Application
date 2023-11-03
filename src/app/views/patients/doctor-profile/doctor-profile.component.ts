@@ -5,6 +5,7 @@ import {SourcesService} from "../../../services/sources.service";
 import {Router} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {DoctorsService} from "../../../services/doctors.service";
 
 @Component({
   selector: 'app-doctor-profile',
@@ -25,7 +26,7 @@ export class DoctorProfileComponent implements OnInit{
   selectedHourStart: any;
   selectedHourEnd: any;
 
-  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {
+  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private DoctorsService: DoctorsService, private router: Router) {
     this.selectedDate = new Date();
   }
 
@@ -41,9 +42,8 @@ export class DoctorProfileComponent implements OnInit{
   }
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    this.newsSource.getSources('doctors').subscribe((data: any): void => {
-      this.doctors = data;
-      this.doctor = this.doctors.find(doctor => doctor.id == this.id);
+    this.DoctorsService.getById(this.id).subscribe((data: any): void => {
+      this.doctor = data;
 
       console.log("Sources: ", this.doctor);
       console.log("Sources: ", this.id);

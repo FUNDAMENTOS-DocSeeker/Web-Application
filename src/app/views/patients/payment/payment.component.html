@@ -11,11 +11,11 @@
 
         <mat-card-content>
           <mat-form-field class="example-full-width">
-                <mat-label>Cardholder</mat-label>
-                <input type="string" matInput placeholder="Cardholder" value="" ngModel="" required/>
-                <mat-error *ngIf="signInForm.controls['cardholder'].errors?.['required']">
-                  Cardholder is required
-                </mat-error>
+            <mat-label>Cardholder</mat-label>
+            <input type="string" matInput placeholder="Cardholder" value="" ngModel="" required/>
+            <mat-error *ngIf="signInForm.controls['cardholder'].errors?.['required']">
+              Cardholder is required
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
@@ -42,10 +42,10 @@
             </mat-error>
           </mat-form-field>
 
-          </mat-card-content>
+        </mat-card-content>
 
 
-        <p>Total amount: ${{ doctor?.cost }}</p>
+        <p>Total amount: ${{ doctor?.doctorFee }}</p>
 
         <button mat-button>See details</button>
         <div class="form-field">

@@ -15,7 +15,7 @@
 
       <div class="info">
         <h1 class="doctorName name">{{doctor.name}}</h1>
-        <h2 class="speciality">{{doctor.area}}</h2>
+        <h2 class="speciality">{{doctor.speciality}}</h2>
       </div>
 
       <div class="averageScore">
@@ -32,9 +32,9 @@
 
       <div class="patientReviewCard" *ngFor="let review of reviewsToDoctor" >
         <app-review
-        [namePatient]="review.customerName"
-        [reviewDescription]="review.description"
-        [score]="review.rating">
+          [namePatient]="review.customerName"
+          [reviewDescription]="review.description"
+          [score]="review.rating">
 
         </app-review>
       </div>
@@ -45,7 +45,7 @@
         <p>This doctor doesn't have any reviews yet</p>
       </div>
       <div class="buttonContainer">
-          <button [routerLink]="['/newReview', id]" class="button">Publish Review</button>
+        <button [routerLink]="['/newReview', id]" class="button">Publish Review</button>
       </div>
     </section>
   </mat-drawer-content>

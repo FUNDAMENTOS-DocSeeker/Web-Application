@@ -6,6 +6,7 @@ import {SourcesService} from "../../../services/sources.service";
 import {SaveAppointmentService} from "../../../services/save-appointment.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AppointmentService} from "../../../services/appointment.service";
+import { DoctorsService } from '../../../services/doctors.service';
 
 @Component({
   selector: 'app-payment',
@@ -30,7 +31,7 @@ export class PaymentComponent implements OnInit{
   private agregarObjetoSubscription: Subscription;
 
   constructor(private interactionService: SaveAppointmentService, private route: ActivatedRoute, private breakpointObserver: BreakpointObserver,
-              private newsSource: SourcesService, private appointmentSource: AppointmentService, private router: Router, public builder:FormBuilder) {
+              private DoctorsService: DoctorsService, private appointmentSource: AppointmentService, private router: Router, public builder:FormBuilder) {
     this.agregarObjetoSubscription = this.interactionService.addAppointment$.subscribe(() => {
       this.addAppointment();
     });
@@ -66,9 +67,8 @@ export class PaymentComponent implements OnInit{
       this.currentPatient = JSON.parse(this.currentPatient);
     }
 
-    this.newsSource.getSources('doctors').subscribe((data: any): void => {
-      this.doctors = data;
-      this.doctor = this.doctors.find(doctor => doctor.id == this.id);
+    this.DoctorsService.getById(this.id).subscribe((data: any): void => {
+      this.doctor = data;
 
       console.log("Sources: ", this.doctor);
       console.log("Sources: ", this.id);

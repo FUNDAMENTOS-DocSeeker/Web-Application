@@ -66,5 +66,5 @@ export class EditProfileComponent implements OnInit {
         this.snackBar.open('Patient edited successfully', '', {duration: 1500})
       });
     }
-    }
+  }
 }

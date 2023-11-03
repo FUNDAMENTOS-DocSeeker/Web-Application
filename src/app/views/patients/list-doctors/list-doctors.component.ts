@@ -6,6 +6,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {LogInService} from "../../../services/log-in.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import { DoctorsService } from '../../../services/doctors.service';
 
 @Component({
   selector: 'app-list-doctors',
@@ -14,18 +15,18 @@ import {Router} from "@angular/router";
 })
 export class ListDoctorsComponent implements OnInit{
   //CONNECTING TO FAKEAPI
-    isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-      .pipe(
-        map(result => result.matches),
-        shareReplay()
-      );
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
   doctors: Array<any> = [];
 
-  constructor(private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {
+  constructor(private breakpointObserver: BreakpointObserver, private DoctorsService: DoctorsService, private router: Router) {
 
   }
   ngOnInit() {
-    this.newsSource.getSources('doctors').subscribe((data: any): void => {
+    this.DoctorsService.getAll().subscribe((data: any): void => {
       this.doctors = data;
       console.log("Sources: ", this.doctors);
     });

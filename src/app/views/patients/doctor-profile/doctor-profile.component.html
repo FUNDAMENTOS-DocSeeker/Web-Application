@@ -26,42 +26,37 @@
           <div class="doctorInfo">
             <div class="doctorPrincipal">
               <h1>{{doctor.name}}</h1>
-              <h2>{{doctor.area}}</h2>
+              <h2>{{doctor.speciality}}</h2>
             </div>
             <div class="doctorStats">
               <div class="doctorStat">
                 <i class="pi pi-user-plus"></i>
                 <div class="statInfo">
                   <h2>Patients</h2>
-                  <h2>{{doctor.patients}}</h2>
+                  <h2>{{doctor.patientsAssisted}}</h2>
                 </div>
               </div>
               <div class="doctorStat">
                 <div class="statInfo">
                   <h2>Years of experience</h2>
-                  <h2>{{doctor.years}}</h2>
+                  <h2>{{doctor.experienceYears}}</h2>
                 </div>
               </div>
               <div class="doctorStat">
                 <div class="statInfo">
                   <h2>Age</h2>
-                  <h2>{{doctor.age}}</h2>
+                  <h2>{{doctor.birthDate}}</h2>
                 </div>
               </div>
               <div class="doctorStat">
                 <div class="statInfo">
                   <h2>Cost per consult</h2>
-                  <h2>{{doctor.cost}}</h2>
+                  <h2>{{doctor.doctorFee}}</h2>
                 </div>
               </div>
             </div>
 
           </div>
-        </div>
-
-        <div class="doctorEducation">
-          <h2 class="title">Education</h2>
-          <h2 class="education" *ngFor="let edu of doctor.education">{{edu.name}}</h2>
         </div>
 
         <button class="reviews" [routerLink]="['/reviewsDoctor', id]">See Reviews</button>
