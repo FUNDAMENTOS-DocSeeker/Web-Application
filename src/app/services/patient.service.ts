@@ -8,7 +8,7 @@ import {Patient} from "../interfaces/patient";
 })
 export class PatientService {
 
-  basePath: string = 'http://localhost:8081/api/v1/patients';
+  basePath: string = 'http://localhost:8080/api/v1/patients';
 
   httpOptions: {headers: HttpHeaders}={
     headers: new HttpHeaders({
