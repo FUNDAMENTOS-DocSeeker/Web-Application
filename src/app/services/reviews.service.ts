@@ -8,7 +8,7 @@ import {Review} from "../interfaces/review";
 })
 export class ReviewsService {
 
-  basePath: string = 'http://localhost:8105/api/';
+  basePath: string = 'http://localhost:8080/api/v1/';
 
   httpOptions: {headers: HttpHeaders}={
     headers: new HttpHeaders({
@@ -31,7 +31,7 @@ export class ReviewsService {
 
   //GET ALL
   getAll():Observable<Review>{
-    return this.http.get<Review>(this.basePath+"review",this.httpOptions)
+    return this.http.get<Review>(this.basePath+"reviews",this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -39,7 +39,7 @@ export class ReviewsService {
   }
 
   getByDoctorId(doctorId: number):Observable<Review>{
-    return this.http.get<Review>(this.basePath+"doctor/" + doctorId + "/reviews",this.httpOptions)
+    return this.http.get<Review>(this.basePath  + "/reviews/" +"doctor/" + doctorId,this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -47,7 +47,7 @@ export class ReviewsService {
   }
 
   postReview(newObject: any): Observable<Object>{
-    return this.http.post<Review>(this.basePath+"review", newObject,this.httpOptions)
+    return this.http.post<Review>(this.basePath+"reviews", newObject,this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
