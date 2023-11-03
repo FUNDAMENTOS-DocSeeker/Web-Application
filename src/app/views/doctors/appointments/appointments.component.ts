@@ -6,6 +6,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {LogInService} from "../../../services/log-in.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {PatientService} from "../../../services/patient.service";
 @Component({
   selector: 'app-appointments',
   templateUrl: './appointments.component.html',
@@ -23,7 +24,7 @@ export class AppointmentsComponent {
   patients: Array<any> = [];
 
 
-  constructor(private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {
+  constructor(private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private patientsServices: PatientService,private router: Router) {
 
   }
   ngOnInit() {
@@ -35,9 +36,9 @@ export class AppointmentsComponent {
       this.dates = data.filter((date: any) => date.doctorId == this.currentDoctor.id);
       console.log("Sources dates: ", this.dates);
     });
-    this.newsSource.getSources('patients').subscribe((data: any): void => {
+    this.patientsServices.getAll().subscribe((data: any): void => {
       this.patients = data;
-      console.log("Sources patients: ", this.patients);
+
     });
   }
 

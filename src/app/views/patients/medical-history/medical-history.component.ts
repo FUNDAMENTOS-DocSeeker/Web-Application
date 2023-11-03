@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SourcesService } from '../../../services/sources.service';
 import { ActivatedRoute } from '@angular/router';
 import { Patient } from '../../../interfaces/patient';
+import {PatientService} from "../../../services/patient.service";
 
 @Component({
   selector: 'app-medical-history',
@@ -15,7 +16,7 @@ export class MedicalHistoryComponent implements OnInit {
   patient: any;
 
   constructor(
-    private sourcesService: SourcesService,
+    private patientsServices: PatientService,
     private route: ActivatedRoute
   ) {}
 
@@ -25,12 +26,10 @@ export class MedicalHistoryComponent implements OnInit {
     if (this.currentPatient) {
       this.currentPatient = JSON.parse(this.currentPatient);
     }
-    this.sourcesService
-      .getSources('medicalInformation')
-      .subscribe((data: any) => {
-        this.medicalInformation = data.find((medical: any) => medical.idPatient == this.idPatient);
-        console.log("Medical Information: ", this.medicalInformation);
-      });
+    this.patientsServices.getById(this.idPatient).subscribe((data: any): void => {
+      this.medicalInformation = data;
+
+    });
 
   }
 /*
