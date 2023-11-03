@@ -64,8 +64,8 @@
         <div class="patientReviewCard" *ngFor="let review of reviewsToDoctor; let i = index" >
           <app-review *ngIf="i < 2"
             [namePatient]="review.customerName"
-            [reviewDescription]="review.customerReview"
-            [score]="review.customerScore">
+            [reviewDescription]="review.description"
+            [score]="review.rating">
           </app-review>
         </div>
         <div class="more-button-container">
