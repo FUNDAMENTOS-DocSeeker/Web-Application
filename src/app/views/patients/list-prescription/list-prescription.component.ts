@@ -5,6 +5,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {PrescriptionsService} from "../../../services/prescriptions.service";
 
+
 @Component({
   selector: 'app-list-prescription',
   templateUrl: './list-prescription.component.html',
@@ -15,7 +16,7 @@ export class ListPrescriptionComponent implements OnInit, AfterViewInit{
   prescriptionData !: Prescriptions;
   dataSource !: MatTableDataSource<any>;
   currentPatient: any;
-  displayedColumns: string[] = ['id', 'dateIssue', 'dateExpiration', 'medicalSpeciality', 'recipCode', 'condition', 'action'];
+  displayedColumns: string[] = ['id','date' ,'doctorName','action'];
 
   @ViewChild(MatPaginator, { static: true }) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
@@ -29,6 +30,7 @@ export class ListPrescriptionComponent implements OnInit, AfterViewInit{
     if (this.currentPatient) {
       this.currentPatient = JSON.parse(this.currentPatient);
     }
+
     this.getAllPrescriptions();
     this.dataSource.paginator = this.paginator;
   }
@@ -36,24 +38,23 @@ export class ListPrescriptionComponent implements OnInit, AfterViewInit{
     this.dataSource.sort = this.sort;
   }
 
-  getAllPrescriptions(){
-    this.prescriptionService.getAll().subscribe((response: any)=>{
-
-      this.dataSource.data =response.filter((prescription: any) => {
-        if (prescription.idPatient == this.currentPatient.id){
-          console.log("SI VA")
-          return true;
-        }
-        console.log("NO VA")
-        return false
-      });
-    })
+  getAllPrescriptions() {
+    this.prescriptionService.getAll().subscribe((response: any) => {
+      this.dataSource.data = response
+        .filter((prescription: any) => prescription.patientId == this.currentPatient.id)
+        .map((prescription: any) => {
+          const doctor = this.prescriptionService.getDoctorById(prescription.doctorId).subscribe((doctorData: any) => {
+            prescription.doctorName = doctorData.name;
+          });
+          return prescription;
+        });
+      console.log(response);
+    });
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
