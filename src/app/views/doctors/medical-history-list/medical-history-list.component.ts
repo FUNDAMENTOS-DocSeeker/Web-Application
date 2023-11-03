@@ -7,6 +7,7 @@ import {LogInService} from "../../../services/log-in.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {PatientService} from "../../../services/patient.service";
+import {AppointmentService} from "../../../services/appointment.service";
 
 @Component({
   selector: 'app-medical-history-list',
