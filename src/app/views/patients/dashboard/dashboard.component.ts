@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SourcesService} from "../../../services/sources.service";
+import {NewsService} from "../../../services/news.service";
 
 @Component({
   selector: 'app-dashboardDoctor',
@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit{
   selectImage(index: number):void{
     this.selectedIndex = index;
   }
-  constructor(private newsSource: SourcesService) {
+  constructor(private newsService: NewsService) {
   }
   ngOnInit() {
     this.currentPatient = localStorage.getItem('currentPatient');
@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit{
     }
     console.log("User logged: ", this.currentPatient)
 
-    this.newsSource.getSources('news').subscribe((data:any):void=>{
+    this.newsService.getAll().subscribe((data:any):void=>{
       this.news = data;
       console.log("News: ", this.news)
     })

@@ -15,6 +15,9 @@ export class SourcesService {
   getSources(endpoint: string): Observable<Object>{
     return this.http.get(`http://localhost:3000/${endpoint}`)
   }
+  getSourcesAppointments(endpoint: string): Observable<Object>{
+    return this.http.get(`http://localhost:8080/api/${endpoint}`)
+  }
   getByIdSources(endpoint: string, id: any): Observable<Object>{
     return this.http.get(`http://localhost:3000/${endpoint}/${id}`)
   }

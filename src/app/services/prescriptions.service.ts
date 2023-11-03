@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {Prescriptions} from "../interfaces/prescriptions";
+import {Doctor} from "../interfaces/doctor";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrescriptionsService {
 
-  basePath: string = 'http://localhost:3000/prescriptions';
+  basePath: string = 'http://localhost:8080/api/v1/prescriptions';
 
   httpOptions: {headers: HttpHeaders}={
     headers: new HttpHeaders({
@@ -36,6 +37,12 @@ export class PrescriptionsService {
         retry(2),
         catchError(this.handleError)
       )
+  }
+  getDoctorById(id: any): Observable<Doctor> {
+    return this.http.get<Doctor>(`http://localhost:8080/doctors/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
   }
 
   // Get Prescription by id

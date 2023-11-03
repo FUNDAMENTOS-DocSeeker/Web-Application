@@ -4,6 +4,7 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SourcesService} from "../../../services/sources.service";
 import { defineComponents, IgcRatingComponent } from 'igniteui-webcomponents';
+import {ReviewsService} from "../../../services/reviews.service";
 
 defineComponents(IgcRatingComponent);
 export class RatingBasic {
@@ -31,7 +32,7 @@ export class NewReviewToDoctorComponent implements OnInit{
   selectedValue= 5;
   currentPatient: any;
 
-  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private reviewSource: ReviewsService , private newsSource: SourcesService, private router: Router) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
@@ -43,7 +44,7 @@ export class NewReviewToDoctorComponent implements OnInit{
       console.log("Sources: ", this.id);
 
     });
-    this.newsSource.getSources('reviews').subscribe((data: any): void => {
+    this.reviewSource.getAll().subscribe((data: any): void => {
       this.reviews = data;
       console.log("lenght: ", this.reviews.length);
     });
@@ -56,14 +57,12 @@ export class NewReviewToDoctorComponent implements OnInit{
   publishReview(){
     let review = {
       "id": this.reviews.length,
-      "profilePhotoUrl": "../../src/assets/images/Camila Hernández image.jpg",
-      "customerName": this.currentPatient.name,
-      "customerReview": this.review,
-      "customerScore": this.selectedValue,
-      "idPatient": this.id,
-      "idDoctor": this.currentPatient.id
+      "description": this.review,
+      "rating": this.selectedValue,
+      "associatedDoctor": this.id,
+      "createdBy": this.currentPatient.id,
     }
-    this.newsSource.postSources('reviews', review).subscribe((data: any): void => {
+    this.reviewSource.postReview(review).subscribe((data: any): void => {
       console.log("REVIEW POST new", data)
     })
   }

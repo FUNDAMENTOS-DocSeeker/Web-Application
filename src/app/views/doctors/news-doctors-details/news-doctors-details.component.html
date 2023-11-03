@@ -8,10 +8,10 @@
         <mat-card-header>
           <mat-card-title>{{new.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="new.image" alt="Photo of news">
+        <img mat-card-image [src]="new.imageUrl" alt="Photo of news">
         <mat-card-content  fxLayout="column" fxLayoutAlign="center center">
-          <p>
-            {{new.info}}
+          <p class="description-text">
+            {{new.description}}
           </p>
         </mat-card-content>
       </mat-card>

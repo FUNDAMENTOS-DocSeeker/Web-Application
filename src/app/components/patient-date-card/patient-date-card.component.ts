@@ -9,5 +9,7 @@ export class PatientDateCardComponent {
   @Input() imageSrc = "https://www.freeiconspng.com/uploads/patient-icon-28.png";
   @Input() namePatient = "Patient Name";
   @Input() date = "Date";
-  @Input() hour = "Hour";
+  @Input() hourStart = "Hour";
+  @Input() hourEnd = "Hour";
+
 }

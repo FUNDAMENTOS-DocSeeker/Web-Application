@@ -6,6 +6,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {LogInService} from "../../../services/log-in.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import { MedicalHistoryService } from 'src/app/services/medical-history.service';
+import {MedicalHistory} from "../../../interfaces/medical-history";
 @Component({
   selector: 'app-medical-history-patient',
   templateUrl: './medical-history-patient.component.html',
@@ -20,11 +22,11 @@ export class MedicalHistoryPatientComponent {
     );
   currentDoctor: any;
   currentPatient: any;
-  medicalHistory: Array<any> = [];
-  id="";
+  medicalHistory: Array<MedicalHistory> = [];
+  id=0;
 
 
-  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {
+  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private newsSource: SourcesService,private medicalService: MedicalHistoryService, private router: Router) {
 
   }
   ngOnInit() {
@@ -40,11 +42,12 @@ export class MedicalHistoryPatientComponent {
       console.log("PATIENT: ", this.currentPatient);
     })
 
-    this.newsSource.getSources('medicalHistory').subscribe((data: any): void => {
-      let temp = data.find((x: any) => x.idPatient == this.id);
-      this.medicalHistory = temp.historial;
-      console.log("MEDICAL HISTORY: ", this.medicalHistory);
-    })
+    this.medicalService.getByPatientId(this.id).subscribe((data: any) =>{
+      this.medicalHistory = data;
+      console.log("Medical History:", this.medicalHistory);
+      console.log("description: ", this.medicalHistory[0].description)
+      }
+    )
 
   }
 }

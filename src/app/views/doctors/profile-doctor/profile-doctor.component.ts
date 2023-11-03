@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SourcesService} from "../../../services/sources.service";
+import {ReviewsService} from "../../../services/reviews.service";
 
 @Component({
   selector: 'app-profile-doctor',
@@ -14,14 +15,14 @@ export class ProfileDoctorComponent {
   id="" ;
   currentDoctor: any;
   promedioCustomerScore: number = 0;
-  constructor(private route: ActivatedRoute, private newsSource: SourcesService) {
+  constructor(private route: ActivatedRoute, private reviewSource: ReviewsService ,private newsSource: SourcesService) {
   }
   calcularPromedioCustomerScore(reviews: any[]): number {
     if (reviews.length === 0) {
       return 0; // No hay revisiones para ese doctor, retorna 0 como promedio.
     }
 
-    const totalCustomerScore = reviews.reduce((sum, review) => sum + review.customerScore, 0);
+    const totalCustomerScore = reviews.reduce((sum, review) => sum + review.rating, 0);
     const promedio = totalCustomerScore / reviews.length;
 
     return promedio;
@@ -34,9 +35,8 @@ export class ProfileDoctorComponent {
       this.currentDoctor = JSON.parse(this.currentDoctor);
     }
 
-    this.newsSource.getSources('reviews').subscribe((data: any): void =>{
-      this.allreviews = data
-      this.reviewsToDoctor = this.allreviews.filter(review => review.idDoctor == this.currentDoctor.id);
+    this.reviewSource.getByDoctorId(Number(this.currentDoctor.id)).subscribe((data: any): void =>{
+      this.reviewsToDoctor = data
       this.promedioCustomerScore = this.calcularPromedioCustomerScore(this.reviewsToDoctor);
       console.log("Sources: ", this.reviewsToDoctor);
 
