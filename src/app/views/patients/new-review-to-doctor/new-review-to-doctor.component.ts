@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {SourcesService} from "../../../services/sources.service";
 import { defineComponents, IgcRatingComponent } from 'igniteui-webcomponents';
 import {ReviewsService} from "../../../services/reviews.service";
+import { DoctorsService } from '../../../services/doctors.service';
 
 defineComponents(IgcRatingComponent);
 export class RatingBasic {
@@ -32,13 +33,12 @@ export class NewReviewToDoctorComponent implements OnInit{
   selectedValue= 5;
   currentPatient: any;
 
-  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private reviewSource: ReviewsService , private newsSource: SourcesService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private breakpointObserver: BreakpointObserver, private reviewSource: ReviewsService , private DoctorsService: DoctorsService, private router: Router) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    this.newsSource.getSources('doctors').subscribe((data: any): void => {
-      this.doctors = data;
-      this.doctor = this.doctors.find(doctor => doctor.id == this.id);
+    this.DoctorsService.getById(this.id).subscribe((data: any): void => {
+      this.doctor = data;
 
       console.log("Sources: ", this.doctor);
       console.log("Sources: ", this.id);

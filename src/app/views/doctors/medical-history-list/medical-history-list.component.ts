@@ -6,6 +6,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {LogInService} from "../../../services/log-in.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {PatientService} from "../../../services/patient.service";
+import {AppointmentService} from "../../../services/appointment.service";
 
 @Component({
   selector: 'app-medical-history-list',
@@ -25,7 +27,7 @@ export class MedicalHistoryListComponent {
   patients: Array<any> = [];
 
 
-  constructor(private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private router: Router) {
+  constructor(private breakpointObserver: BreakpointObserver, private newsSource: SourcesService, private patientsServices: PatientService, private appointmentSource: AppointmentService, private router: Router) {
 
   }
   ngOnInit() {
@@ -33,20 +35,23 @@ export class MedicalHistoryListComponent {
     if (this.currentDoctor) {
       this.currentDoctor = JSON.parse(this.currentDoctor);
     }
-    this.newsSource.getSources('dates').subscribe((data: any): void => {
-      this.dates = data.filter((date: any) => date.doctorId == this.currentDoctor.id);
-      console.log("Sources dates: ", this.dates);
-      this.newsSource.getSources('patients').subscribe((data: any): void => {
-        this.patientsAll = data;
-        console.log("Sources all patient: ", this.patientsAll);
-        // Obtener los idPatient de los objetos filtrados en dates
-        const filteredPatientIds = Array.from(new Set(this.dates.map(date => date.idPatient)));
 
-        // Filtrar los pacientes que tengan idPatient en filteredPatientIds
-        this.patients = this.patientsAll.filter(patient => filteredPatientIds.includes(patient.id));
-        console.log("PACIENTEEEE: ", this.patients);
-      });
+    this.appointmentSource.getById(Number(this.currentDoctor.id)).subscribe((data: any): void => {
+      this.dates = data;
+      console.log("Sources dates: ", this.dates);
     });
+    this.patientsServices.getAll().subscribe((data: any): void => {
+      this.patientsAll = data;
+
+    });
+
+    const filteredPatientIds = Array.from(new Set(this.dates.map(date => date.patientId)));
+
+    // Filtrar los pacientes que tengan idPatient en filteredPatientIds
+    this.patients = this.patientsAll.filter(patient => filteredPatientIds.includes(patient.id));
+    console.log("PACIENTEEEE: ", this.patients);
+
+
 
   }
 }

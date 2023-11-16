@@ -53,7 +53,7 @@
                 </mat-error>
                 <mat-icon matSuffix>person</mat-icon>
               </mat-form-field>
-
+<!--
               <mat-form-field class="example-mid-width">
                 <mat-label>Age</mat-label>
                 <input type="age" matInput placeholder="Age" value="" [(ngModel)]="doctor.age" required/>
@@ -61,11 +61,11 @@
                   Age is required
                 </mat-error>
                 <mat-icon matSuffix>calendar_today</mat-icon>
-              </mat-form-field>
+              </mat-form-field> -->
 
               <mat-form-field class="example-mid-width-confirm">
                 <mat-label>Area</mat-label>
-                <input type="area" matInput placeholder="Area" value="" [(ngModel)]="doctor.area" required/>
+                <input type="area" matInput placeholder="Area" value="" [(ngModel)]="doctor.speciality" required/>
                 <mat-error *ngIf="area.errors?.['required']">
                   Area is required
                 </mat-error>

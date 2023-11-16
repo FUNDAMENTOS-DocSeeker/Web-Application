@@ -48,7 +48,7 @@ const routes: Routes = [
   { path: 'reviewsDoctor/:id', component: DoctorReviewsComponent },
   { path: 'newReview/:id', component: NewReviewToDoctorComponent },
   { path: 'dateAppointment/:id/:idDate', component: DoctorDateComponent },
-  { path: 'payment/:id/:idDate/:idHours', component: PaymentComponent },
+  { path: 'payment/:id/:idDate/:selectedHourStart/:selectedHourEnd', component: PaymentComponent },
   { path: 'medicalHistory/:id', component: MedicalHistoryComponent },
   { path: 'listPatientsMedicalHistory', component: MedicalHistoryListComponent },
   { path: 'listPatientsMedicalHistory/:idPatient', component: MedicalHistoryPatientComponent },

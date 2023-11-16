@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './views/home/home.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { LogInComponent } from './views/patients/log-in/log-in.component';
@@ -115,6 +116,7 @@ import { NewsDoctorsDetailsComponent } from './views/doctors/news-doctors-detail
     NewsDoctorsDetailsComponent,
   ],
   imports: [
+    NgxMaterialTimepickerModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -8,7 +8,7 @@
     <div class="profile-container">
 
       <div class="img-doctor">
-        <img [src]="currentDoctor.photo" alt="Doctor Photo">
+        <img [src]="currentDoctor.profilePhoto" alt="Doctor Photo">
       </div>
 
 
@@ -17,30 +17,30 @@
         <h1 class="name">{{ currentDoctor.name }}</h1>
 
         <a class="doctor-detail"  mat-list-item>
-          <mat-icon>monitor_heart</mat-icon> {{ currentDoctor.area }}
+          <mat-icon>monitor_heart</mat-icon> {{ currentDoctor.speciality }}
         </a>
 
         <a class="doctor-detail"  mat-list-item>
-          <mat-icon>person</mat-icon> Patients: {{ currentDoctor.patients }}
+          <mat-icon>person</mat-icon> Patients: {{ currentDoctor.patientsAssisted }}
         </a>
 
 
         <a class="doctor-information"  mat-list-item>
-          Age
+          BirthDate
           <br>
-          {{currentDoctor.age}}
+          {{currentDoctor.birthDate}}
         </a>
 
         <a class="doctor-information"  mat-list-item>
           Years exp.
           <br>
-          {{ currentDoctor.years}}
+          {{ currentDoctor.experienceYears}}
         </a>
 
         <a class="doctor-information"  mat-list-item>
           S/ Price
           <br>
-          {{ currentDoctor.cost}}
+          {{ currentDoctor.doctorFee}}
         </a>
 
         <button class="edit-button" routerLink="/editProfileDoctor">Edit</button>
@@ -63,9 +63,9 @@
         <h2 class="gray">  Score: {{promedioCustomerScore}}</h2>
         <div class="patientReviewCard" *ngFor="let review of reviewsToDoctor; let i = index" >
           <app-review *ngIf="i < 2"
-            [namePatient]="review.customerName"
-            [reviewDescription]="review.description"
-            [score]="review.rating">
+                      [namePatient]="review.customerName"
+                      [reviewDescription]="review.description"
+                      [score]="review.rating">
           </app-review>
         </div>
         <div class="more-button-container">

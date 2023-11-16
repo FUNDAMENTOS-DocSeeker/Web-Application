@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { SourcesService } from '../../../services/sources.service';
 import { ActivatedRoute } from '@angular/router';
+import {PatientService} from "../../../services/patient.service";
 @Component({
   selector: 'app-appointments-patients',
   templateUrl: './appointments-patients.component.html',
@@ -12,25 +13,16 @@ export class AppointmentsPatientsComponent  implements OnInit {
   patient: any = {};
 
   constructor(
-    private sourcesService: SourcesService,
+    private patientsServices: PatientService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.idPatient = this.route.snapshot.params['id'];
-    this.sourcesService
-      .getSources('patients')
-      .subscribe((data: any) => {
-        this.patient = data.find((patient: any) => patient.id == this.idPatient);
-        console.log("Patient: ", this.patient);
-      });
+    this.patientsServices.getById(this.idPatient).subscribe((data: any): void => {
+      this.patient = data
+      this.medicalInformation = data;
 
-
-    this.sourcesService
-      .getSources('medicalInformation')
-      .subscribe((data: any) => {
-        this.medicalInformation = data.find((patient: any) => patient.idPatient == this.idPatient);
-        console.log("Patient: ", this.patient);
-      });
+    });
   }
 }

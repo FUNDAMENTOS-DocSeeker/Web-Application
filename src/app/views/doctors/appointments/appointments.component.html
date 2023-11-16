@@ -8,9 +8,9 @@
       <h1>My Appointments</h1>
       <div *ngFor="let date of dates">
         <app-patient-date-card [routerLink]="['/appointmentsPatients', date.patientId]"
-                          [namePatient]="getNamePatient(date.idPatient)"
+                          [namePatient]="getNamePatient(date.patientId)"
                           [date]="date.date"
-                               [hourStart]="date.startTime" 
+                               [hourStart]="date.startTime"
                                [hourEnd]="date.endTime">
         </app-patient-date-card>
       </div>

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
-import {Appointment} from "../interfaces/appointment";
-import { BaseUrlService } from './base-url.service';
+import {Patient} from "../interfaces/patient";
+import {BaseUrlService} from "./base-url.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AppointmentService {
+export class PatientService {
 
-  basePath: string = `${this.baseUrlService.baseUrl}/api/v1/appointments`;
+  basePath: string = `${this.baseUrlService.baseUrl}/api/v1/patients`;
 
   httpOptions: {headers: HttpHeaders}={
     headers: new HttpHeaders({
@@ -17,7 +17,7 @@ export class AppointmentService {
     })
   }
 
-  constructor(private http: HttpClient,private baseUrlService: BaseUrlService) { }
+  constructor(private http: HttpClient, private baseUrlService: BaseUrlService) { }
 
   // API ERROR HANDLE
   handleError(error: HttpErrorResponse):Observable<never>{
@@ -31,22 +31,29 @@ export class AppointmentService {
   }
 
   //GET ALL
-  getAll():Observable<Appointment>{
-    return this.http.get<Appointment>(this.basePath,this.httpOptions)
+  getAll():Observable<Patient>{
+    return this.http.get<Patient>(this.basePath,this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
-  getById(id: number):Observable<Appointment>{
-    return this.http.get<Appointment>(this.basePath+'/doctor/'+id,this.httpOptions)
+  getById(id: string):Observable<Patient>{
+    return this.http.get<Patient>(this.basePath+'/'+id,this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
-  postReview(newObject: any): Observable<Object>{
-    return this.http.post<Appointment>(this.basePath, newObject,this.httpOptions)
+  postPatient(newObject: any): Observable<Object>{
+    return this.http.post<Patient>(this.basePath, newObject,this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+  getPatientLogIn(dni: string, password: string):Observable<Patient>{
+    return this.http.get<Patient>(this.basePath+'/dni/'+dni+'/password/'+password,this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

@@ -10,57 +10,57 @@
     <br>
 
     <div class="content-container">
-    <div class="img-patient">
-      <img [src]="currentPatient.photo" alt="Patient Photo">
-    </div>
+      <div class="img-patient">
+        <img [src]="currentPatient.photo" alt="Patient Photo">
+      </div>
 
-    <div class="form-container">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title>Edit</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-               <mat-form-field class="example-mid-width">
-                <mat-label>Name</mat-label>
-                <input type="string" matInput placeholder="Name" value="" [(ngModel)]="currentPatient.name" required/>
-                <mat-error *ngIf="name.errors?.['required']">
-                  Name is required
-                </mat-error>
-                <mat-icon matSuffix>person</mat-icon>
-              </mat-form-field>
+      <div class="form-container">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Edit</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field class="example-mid-width">
+              <mat-label>Name</mat-label>
+              <input type="string" matInput placeholder="Name" value="" [(ngModel)]="currentPatient.name" required/>
+              <mat-error *ngIf="name.errors?.['required']">
+                Name is required
+              </mat-error>
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
 
-              <mat-form-field class="example-mid-width-confirm">
-                <mat-label>Birthday</mat-label>
-                <input type="date" matInput placeholder="Birthday" value="" [(ngModel)]="currentPatient.birthday" required/>
-                <mat-error *ngIf="birthday.errors?.['required']">
-                  Birthday is required
-                </mat-error>
-                <mat-icon matSuffix>calendar_today</mat-icon>
-              </mat-form-field>
+            <mat-form-field class="example-mid-width-confirm">
+              <mat-label>Birthday</mat-label>
+              <input type="date" matInput placeholder="Birthday" value="" [(ngModel)]="currentPatient.birthday" required/>
+              <mat-error *ngIf="birthday.errors?.['required']">
+                Birthday is required
+              </mat-error>
+              <mat-icon matSuffix>calendar_today</mat-icon>
+            </mat-form-field>
 
-              <mat-form-field class="example-mid-width">
-                <mat-label>Cellphone</mat-label>
-                <input type="tel" matInput placeholder="Cellphone" value="" [(ngModel)]="currentPatient.cell1" required/>
-                <mat-error *ngIf="cellphone.errors?.['required']">
-                  Cellphone is required
-                </mat-error>
-                <mat-icon matSuffix>call</mat-icon>
-              </mat-form-field>
+            <mat-form-field class="example-mid-width">
+              <mat-label>Cellphone</mat-label>
+              <input type="tel" matInput placeholder="Cellphone" value="" [(ngModel)]="currentPatient.cellphone" required/>
+              <mat-error *ngIf="cellphone.errors?.['required']">
+                Cellphone is required
+              </mat-error>
+              <mat-icon matSuffix>call</mat-icon>
+            </mat-form-field>
 
-              <mat-form-field class="example-mid-width-confirm">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput placeholder="Email" value="" [(ngModel)]="currentPatient.email" required/>
-                <mat-error *ngIf="email.errors?.['required']">
-                  Email is required
-                </mat-error>
-                <mat-icon matSuffix>mail</mat-icon>
-              </mat-form-field>
+            <mat-form-field class="example-mid-width-confirm">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput placeholder="Email" value="" [(ngModel)]="currentPatient.email" required/>
+              <mat-error *ngIf="email.errors?.['required']">
+                Email is required
+              </mat-error>
+              <mat-icon matSuffix>mail</mat-icon>
+            </mat-form-field>
 
 
-              <button mat-button color="primary" (click)="update()">Save</button>
-        </mat-card-content>
-      </mat-card>
-    </div>
+            <button mat-button color="primary" (click)="update()">Save</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
     <br><br><br>
   </mat-drawer-content>

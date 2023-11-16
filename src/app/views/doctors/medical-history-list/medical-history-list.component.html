@@ -8,7 +8,7 @@
       <h1>My Patients</h1>
       <div *ngFor="let patient of patients">
         <app-patient-card [routerLink]="['/listPatientsMedicalHistory', patient.id]"
-                         [namePatient]="patient.name">
+                          [namePatient]="patient.name">
         </app-patient-card>
       </div>
     </div>

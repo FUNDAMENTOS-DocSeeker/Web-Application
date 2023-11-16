@@ -1,12 +1,17 @@
 export interface Patient{
-  dni: string;
-  name: string;
-  gender: string;
-  birthday: string;
-  email: string;
-  cellphone: string;
-  password: string;
-  photo: string;
+  id: number,
+  name: string,
+  email: string,
+  password: string,
+  dni: string,
+  height: number,
+  weight: number,
+  bmi: number,
+  birthday: string,
+  cellphone: string,
+  photo: string,
+  allergies: Array<string>
+
 }
 
 
