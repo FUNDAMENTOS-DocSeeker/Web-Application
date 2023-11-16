@@ -2,20 +2,21 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 import { MedicalHistory } from '../interfaces/medical-history';
+import { BaseUrlService } from './base-url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedicalHistoryService {
 
-  basePath = "http://localhost:8080/api/v1/medical-histories"
+  basePath = `${this.baseUrlService.baseUrl}/api/v1/medical-histories`
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     })
   }
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private baseUrlService: BaseUrlService) { }
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

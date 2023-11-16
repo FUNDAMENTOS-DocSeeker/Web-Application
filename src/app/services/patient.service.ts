@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {Patient} from "../interfaces/patient";
+import {BaseUrlService} from "./base-url.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
 
-  basePath: string = 'http://localhost:8080/api/v1/patients';
+  basePath: string = `${this.baseUrlService.baseUrl}/api/v1/patients`;
 
   httpOptions: {headers: HttpHeaders}={
     headers: new HttpHeaders({
@@ -16,7 +17,7 @@ export class PatientService {
     })
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private baseUrlService: BaseUrlService) { }
 
   // API ERROR HANDLE
   handleError(error: HttpErrorResponse):Observable<never>{

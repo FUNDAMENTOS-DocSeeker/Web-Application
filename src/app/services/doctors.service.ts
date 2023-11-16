@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import { DoctorResource } from "../interfaces/doctor-resource";
+import { BaseUrlService } from './base-url.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class DoctorsService {
       'content-type':'application/json',
     })
   }
-  constructor(private http: HttpClient) {
-    this.doctorsUrl = "http://localhost:8080/api/v1/doctors"
+  constructor(private http: HttpClient, private baseUrlService: BaseUrlService) {
+    this.doctorsUrl = `${this.baseUrlService.baseUrl}/api/v1/doctors`
   }
 
 
