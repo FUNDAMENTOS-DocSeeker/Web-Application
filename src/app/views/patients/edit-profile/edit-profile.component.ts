@@ -60,7 +60,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   update() {
-    if (this.currentPatient.email != '' && this.currentPatient.cellphone != '' && this.currentPatient.name != '' && this.currentPatient.birthday != '') {
+    if (this.currentPatient.email != '' && this.currentPatient.phoneNumber != '' && this.currentPatient.name != '' && this.currentPatient.birthDate != '') {
       this.loginService.updatePatient(this.currentPatient, this.currentPatient.id).subscribe((response) => {
         localStorage.setItem('currentPatient', JSON.stringify(this.currentPatient));
         this.snackBar.open('Patient edited successfully', '', {duration: 1500})

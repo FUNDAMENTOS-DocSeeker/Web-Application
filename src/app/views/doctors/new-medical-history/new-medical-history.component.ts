@@ -41,7 +41,7 @@ export class NewMedicalHistoryComponent {
     })
 
     this.patientsServices.getById(this.id).subscribe((data: any): void => {
-      this.patients = data;
+      this.patient = data;
 
     });
   }
@@ -53,7 +53,7 @@ export class NewMedicalHistoryComponent {
 
     let newHistory = {
       "id": this.medicalHistories.length,
-      "idPatient": this.id,
+      "patientId": this.id,
       "appointmentId": 0,
       "description": this.description, }
 

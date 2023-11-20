@@ -72,6 +72,7 @@ export class PaymentComponent implements OnInit{
 
       console.log("Sources: ", this.doctor);
       console.log("Sources: ", this.id);
+      console.log("CUrrent patient: ", this.currentPatient);
 
     });
 

@@ -34,22 +34,21 @@ export class MedicalHistoryListComponent {
     this.currentDoctor = localStorage.getItem('currentDoctor');
     if (this.currentDoctor) {
       this.currentDoctor = JSON.parse(this.currentDoctor);
+      console.log("CURRENT DOCTOR", this.currentDoctor)
     }
-
     this.appointmentSource.getById(Number(this.currentDoctor.id)).subscribe((data: any): void => {
       this.dates = data;
       console.log("Sources dates: ", this.dates);
+      this.patientsServices.getAll().subscribe((data: any): void => {
+        this.patientsAll = data;
+        const filteredPatientIds = Array.from(new Set(this.dates.map(date => date.patientId)));
+        console.log("FILTERED PATIENTS ID", filteredPatientIds)
+        // Filtrar los pacientes que tengan idPatient en filteredPatientIds
+        this.patients = this.patientsAll.filter(patient => filteredPatientIds.includes(patient.id));
+        console.log("PACIENTEEEE: ", this.patients);
+      });
     });
-    this.patientsServices.getAll().subscribe((data: any): void => {
-      this.patientsAll = data;
 
-    });
-
-    const filteredPatientIds = Array.from(new Set(this.dates.map(date => date.patientId)));
-
-    // Filtrar los pacientes que tengan idPatient en filteredPatientIds
-    this.patients = this.patientsAll.filter(patient => filteredPatientIds.includes(patient.id));
-    console.log("PACIENTEEEE: ", this.patients);
 
 
 
